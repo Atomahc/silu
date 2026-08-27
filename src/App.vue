@@ -32,12 +32,12 @@
       </header>
 
       <!-- 卷轴轴柄 - 左边 (绝对定位在 scroll-container 的边缘) -->
-      <div class="scroll-handle handle-left" @mouseenter="startScroll('left')" @mouseleave="stopScroll">
+      <div class="scroll-handle handle-left" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }" @mouseenter="startScroll('left')" @mouseleave="stopScroll">
         <img src="/Group 2@2x.png" alt="">
       </div>
 
       <!-- 卷轴轴柄 - 右边 (绝对定位在 scroll-container 的边缘) -->
-      <div class="scroll-handle handle-right" @mouseenter="startScroll('right')" @mouseleave="stopScroll">
+      <div class="scroll-handle handle-right" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }" @mouseenter="startScroll('right')" @mouseleave="stopScroll">
         <img src="/Group 3@2x.png" alt="">
       </div>
 
@@ -364,7 +364,9 @@ const markers = ref([
   animation: scrollPhysicalExpand 3.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 
-.ratio-box.is-opening .panoramic-container,
+.ratio-box.is-opening .panoramic-container {
+  animation: scrollContentFadeIn 3.6s ease forwards;
+}
 
 .scroll-footer.is-opening {
   height: 0.6rem;
@@ -398,6 +400,37 @@ const markers = ref([
 }
 
 /* 纯物理宽度展开关键帧 */
+
+.handle-left.is-opening {
+  animation: handleLeftExpand 3.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.handle-right.is-opening {
+  animation: handleRightExpand 3.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes handleLeftExpand {
+  0% {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  100% {
+    left: 0.2rem;
+    transform: translateX(-30%);
+  }
+}
+
+@keyframes handleRightExpand {
+  0% {
+    right: 50%;
+    transform: translateX(50%);
+  }
+  100% {
+    right: 0.2rem;
+    transform: translateX(30%);
+  }
+}
+
 @keyframes scrollPhysicalExpand {
   0% {
     width: 0.1vw;
