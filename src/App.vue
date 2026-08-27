@@ -146,8 +146,8 @@ const stopScroll = () => {
 }
 
 const isNight = ref(false)
-const lastUpdated = ref('2027/07/03 14:32')
-const currentTime = ref('2027/07/03 14:32')
+const lastUpdated = ref('2027/07/03')
+const currentTime = ref('2027/07/03')
 const activeMarker = ref(null)
 
 // 卷轴动画状态
@@ -191,7 +191,7 @@ onMounted(() => {
     const day = String(now.getDate()).padStart(2, '0')
     const hours = String(now.getHours()).padStart(2, '0')
     const minutes = String(now.getMinutes()).padStart(2, '0')
-    currentTime.value = `${year}/${month}/${day} ${hours}:${minutes}`
+    currentTime.value = `${year}/${month}/${day}`
   }, 1000)
 })
 
@@ -223,10 +223,11 @@ const markers = ref([
 .app-shell {
   width: 100vw;
   height: 100vh;
-  padding: 0.5rem;
+  padding: 1.5rem 0.5rem;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
+  background: #000;
 }
 
 .scroll-container {
@@ -249,7 +250,7 @@ const markers = ref([
   display: flex;
   align-items: center;
   gap: 0.08rem;
-  font-size: 0.3rem;
+  font-size: 0.2rem;
   color: #5c4015;
 }
 
@@ -260,21 +261,22 @@ const markers = ref([
   font-size: 0px;
 }
 .icon-refresh img{
-  width: 0.4rem;
+  width: 0.3rem;
 }
 .icon-clock img{
-  width: 0.4rem;
+  width: 0.3rem;
 }
 .icon-weather img{
-  width: 0.7rem;
+  width: 0.6rem;
 }
 .icon-weather{
   font-size: 0px;
 }
 
 .update-time{
-  font-size: 0.3rem;
+  font-size: 0.2rem;
   color: #5c4015;
+  flex-wrap: nowrap;
 }
 
 /* 32:9 比例适配外框 */
@@ -292,7 +294,7 @@ const markers = ref([
   width: 100%;
   height: 100%;
   position: relative;
-  padding:0.3rem 0.45rem;
+  padding:0.23rem 0.3rem ;
   box-sizing: border-box;
 }
 
@@ -365,7 +367,7 @@ const markers = ref([
 .ratio-box.is-opening .panoramic-container,
 
 .scroll-footer.is-opening {
-  height: 0.68rem;
+  height: 0.6rem;
   background: linear-gradient(180deg, #3d2b15 0%, #1e1308 100%);
   border-top: 0.02rem solid #d49c25;
   display: flex;
@@ -375,12 +377,12 @@ const markers = ref([
   z-index: 100;
   position: absolute;
   left: 0;
-  bottom: .3rem;
+  bottom: .23rem;
   width: 100%;
   box-sizing: border-box;
 }
 .header.is-opening{
-  height: 0.68rem;
+  height: 0.6rem;
   background: linear-gradient(180deg, #3d2b15 0%, #1e1308 100%);
   border-top: 0.02rem solid #d49c25;
   display: flex;
@@ -389,7 +391,7 @@ const markers = ref([
   padding: 0 0.2rem;
   z-index: 100;
   position: absolute;
-  left: .3rem;
+  top: .23rem;
   bottom: 0;
   width: 100%;
   box-sizing: border-box;
@@ -423,12 +425,12 @@ const markers = ref([
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:0px 1rem;
+  padding:0px .5rem;
   z-index: 100;
   width: 100%;
   position: absolute;
   left: 0;
-  top: .3rem;
+  top: .23rem;
   box-sizing: border-box;
 }
 
@@ -436,13 +438,17 @@ const markers = ref([
   display: flex;
   align-items: center;
   gap: 0.15rem;
-  font-size: 0.14rem;
+  font-size: 0.12rem;
   color: #5c4015;
   font-weight: 500;
+
+}
+.header-right{
+  justify-content: flex-end;
 }
 
 .header-center {
-  width:50%;
+  width: 8rem;
   font-size:0px
 }
 
@@ -647,15 +653,16 @@ const markers = ref([
 
 /* 底部 Golden 卷轴五大板块栏 */
 .scroll-footer {
-  height: 0.68rem;
-  border-top: 0.02rem solid #d49c25;
+  height: 0.6rem;
+
   display: flex;
   align-items: center;
   justify-content: space-around;
   padding: 0 0.2rem;
+  box-sizing: border-box;
   z-index: 100;
   position: absolute;
-  bottom: .3rem;
+  bottom: .23rem;
   left: 0;
   width: 100%;
   box-sizing: border-box;
