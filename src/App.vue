@@ -7,24 +7,24 @@
         <div class="header-left">
           <div class="time-update">
             <div class="icon-refresh">
-                <img src="./Frame@2x.png" alt="">
+                <img src="/Frame@2x.png" alt="">
             </div>
             <div class="update-time">更新时间：{{ lastUpdated }}</div>
           </div>
         </div>
         <div class="header-center">
-          <img src="./标题@2x-1.png" alt="霍尔果斯口岸数字名片" class="header-title-img" />
+          <img src="/标题@2x-1.png" alt="霍尔果斯口岸数字名片" class="header-title-img" />
         </div>
         <div class="header-right">
           <div class="current-time">
             <div class="icon-clock">
-                <img src="./Frame@2x(1).png" alt="">
+                <img src="/Frame@2x(1).png" alt="">
             </div>
             <div>{{ currentTime }}</div>
           </div>
           <div class="weather-info">
             <div class="icon-weather">
-              <img src="./image 2@2x.png" alt="">
+              <img src="/image 2@2x.png" alt="">
             </div>
             <div>24~32°C</div>
           </div>
@@ -33,12 +33,12 @@
 
       <!-- 卷轴轴柄 - 左边 (绝对定位在 scroll-container 的边缘) -->
       <div class="scroll-handle handle-left" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }" @mouseenter="startScroll('left')" @mouseleave="stopScroll">
-        <img src="./Group 2@2x.png" alt="">
+        <img src="/Group 2@2x.png" alt="">
       </div>
 
       <!-- 卷轴轴柄 - 右边 (绝对定位在 scroll-container 的边缘) -->
       <div class="scroll-handle handle-right" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }" @mouseenter="startScroll('right')" @mouseleave="stopScroll">
-        <img src="./Group 3@2x.png" alt="">
+        <img src="/Group 3@2x.png" alt="">
       </div>
 
       <!-- Ratio Box (100% width) -->
@@ -52,7 +52,7 @@
             <!-- 中间全景展示大图与交互热点区域 -->
             <div class="panoramic-container">
               <!-- 背景画卷 -->
-              <img src="./Group 1@2x.png" alt="霍尔果斯口岸全景图" class="panoramic-bg" />
+              <img src="/Group 1@2x.png" alt="霍尔果斯口岸全景图" class="panoramic-bg" />
 
               <!-- 左上角观光旅游人数统计卡片 -->
               <div class="tourist-card">
@@ -114,8 +114,8 @@
       <transition name="slide-right">
         <div class="right-popup" v-if="currentNavIndex !== '' && currentNavIndex !== null">
           <div class="right-popup-inner">
-            <img class="popup-bg" src="./Group 130@2x.png" alt="" draggable="false" />
-            <img class="popup-close" src="./Group 40@2x.png" @click="currentNavIndex = ''" alt="close" draggable="false" />
+            <img class="popup-bg" src="/Group 130@2x.png" alt="" draggable="false" />
+            <img class="popup-close" src="/Group 40@2x.png" @click="currentNavIndex = ''" alt="close" draggable="false" />
             <div class="popup-title">{{ footerNavs[currentNavIndex] }}</div>
             <div class="popup-content">
               <component :is="panels[currentNavIndex]" v-if="currentNavIndex !== '' && currentNavIndex !== null" />

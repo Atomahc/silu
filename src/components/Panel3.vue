@@ -2,14 +2,14 @@
   <div class="grid-container">
     <div class="grid-item" v-for="item in zhibiao" :key="item.title">
       <div class="item-title">
-        <img src="./Frame 119@2x.png" class="title-bg" alt="" draggable="false" />
+        <img src="/Frame 119@2x.png" class="title-bg" alt="" draggable="false" />
         <span class="title-text">{{ item.title }}</span>
       </div>
       <div class="item-content">
         <div class="content-wrapper">
           <div class="drlj">
             <div>当日累计</div>
-            <img src="./Slice 3@2x.png" class="content-img" alt="" draggable="false" />
+            <img src="/Slice 3@2x.png" class="content-img" alt="" draggable="false" />
             <div style="font-size: .2rem; color:#fff;font-weight: bold;">51.7</div>
           </div>
           <div style="color: #0DC923;">

@@ -44,7 +44,7 @@
 			<span style=";font-size: 0.16rem;font-family:Calibri;"><span style="font-family:宋体;">新疆伊犁</span><span style="font-family:Calibri;">“</span><span style="font-family:宋体;">百年口岸</span><span style="font-family:Calibri;">”</span><span style="font-family:宋体;">霍尔果斯是西北大通道的一个重要驿站，这里是丝绸之路经济带上的重要枢纽。而在</span><span style="font-family:Calibri;">70</span><span style="font-family:宋体;">多年前的抗日战争中，这里曾是苏联援华物资运输大通道</span><span style="font-family:Calibri;">——“</span><span style="font-family:宋体;">西北国际大通道</span><span style="font-family:Calibri;">”</span><span style="font-family:宋体;">陆路通道的起点，被誉为</span><span style="font-family:Calibri;">“</span><span style="font-family:宋体;">红色口岸</span><span style="font-family:Calibri;">”“</span><span style="font-family:宋体;">生命通道</span><span style="font-family:Calibri;">”</span><span style="font-family:宋体;">。</span></span>
 		</p>
 		<p style="margin-top:0;margin-right:0;margin-bottom:0;margin-left:0;text-indent:28px;padding:0 0 0 0;text-align:left;" align="left">
-			<span style=";font-size: 0.16rem;font-family:Calibri;"><span style="font-family:宋体;">抗日战争时期，</span></span><strong><span style=";color:#aa0000;font-family:Calibri;"><span style="font-family:宋体;">中国</span>80%<span style="font-family:宋体;">以上的外国援助物资来自苏联，而其中的</span><span style="font-family:Calibri;">90%</span><span style="font-family:宋体;">又都是通过霍尔果斯口岸运送入境。</span></span></strong><img src="/src/img/QXTDbeJF_LnbA.png" alt="图片1.png" style="text-align: center; caret-color: red; vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" draggable="false" data-ratio="0.6152450090744102" data-w="551"/>
+			<span style=";font-size: 0.16rem;font-family:Calibri;"><span style="font-family:宋体;">抗日战争时期，</span></span><strong><span style=";color:#aa0000;font-family:Calibri;"><span style="font-family:宋体;">中国</span>80%<span style="font-family:宋体;">以上的外国援助物资来自苏联，而其中的</span><span style="font-family:Calibri;">90%</span><span style="font-family:宋体;">又都是通过霍尔果斯口岸运送入境。</span></span></strong><img src="./img/QXTDbeJF_LnbA.png" alt="图片1.png" style="text-align: center; caret-color: red; vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" draggable="false" data-ratio="0.6152450090744102" data-w="551"/>
 		</p>
 		<p style=";text-align:center;" align="center">
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">图为抗战时期途经霍尔果斯运输而来的物资。</span></span>
@@ -62,13 +62,13 @@
 			<span style=";font-size: 0.16rem;font-family:Calibri;"><span style="font-family:Calibri;">“</span><span style="font-family:宋体;">不怕山高，不怕无边的戈壁，不怕风霜雨雪，我们为了新疆的建设，大家一起用力。</span><span style="font-family:Calibri;">”1939</span><span style="font-family:宋体;">年</span><span style="font-family:Calibri;">5</span><span style="font-family:宋体;">月出版的《新疆日报》上刊登着这样一首《筑路歌》。作者是共产党员沈雁冰，也就是茅盾先生。读着这些歌词，眼前仿佛浮现出当时新疆各族民众唱着歌儿鼓着劲儿，一起建设、守护这条红色交通线的场景。</span></span>
 		</p>
 		<p style=";text-align:center;" align="center">
-			<img src="/src/img/uXgavCDp_75rJ.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="图片2.png" draggable="false" data-ratio="0.6737804878048781" data-w="656"/>
+			<img src="./img/uXgavCDp_75rJ.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="图片2.png" draggable="false" data-ratio="0.6737804878048781" data-w="656"/>
 		</p>
 		<p style=";text-align:center;" align="center">
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">图为抗战时期中苏在霍尔果斯的货物进出通道。</span></span>
 		</p>
 		<p style="text-align:center;" align="center">
-			<img src="/src/img/x7Pf5Zrf_jJa7.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="图片3.png" draggable="false" data-ratio="0.496" data-w="500"/>
+			<img src="./img/x7Pf5Zrf_jJa7.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="图片3.png" draggable="false" data-ratio="0.496" data-w="500"/>
 		</p>
 		<p style=";text-align:center;" align="center">
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">西起霍尔果斯，东到哈密星星峡的</span>1500多公里运输线。</span>
@@ -77,7 +77,7 @@
 			<span style=";font-size: 0.16rem;font-family:宋体;">1940年12月，苏联300辆载重汽车满载飞机配件、大炮、轻重机枪、汽油等抗战物资从霍尔果斯入境，返回时运回中国做抵偿的茶叶、羊毛等物资。</span>
 		</p>
 		<p style=";text-align:left;" align="left">
-			<img src="/src/img/uu2ODgaZ_6B3L.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="图片4.png" draggable="false" data-ratio="0.6659242761692651" data-w="898"/><span style=";font-size: 0.16rem;font-family:宋体;"></span>
+			<img src="./img/uu2ODgaZ_6B3L.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="图片4.png" draggable="false" data-ratio="0.6659242761692651" data-w="898"/><span style=";font-size: 0.16rem;font-family:宋体;"></span>
 		</p>
 		<p style=";text-align:center;" align="center">
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">图为支援抗战一线的飞机经霍尔果斯运输入境。</span></span>
@@ -92,7 +92,7 @@
 </section>`,Xa=`<div class="custom-timeline">
   <div class="timeline-item">
     <div class="timeline-left">
-      <img src="/src/img/FUbVs4OF_F88Y.png" />
+      <img src="./img/FUbVs4OF_F88Y.png" />
     </div>
     <div class="timeline-divider">
       <div class="dot"></div><div class="line"></div>
@@ -108,7 +108,7 @@
 
   <div class="timeline-item">
     <div class="timeline-left">
-      <img src="/src/img/pnUOVw5Q_XHOR.png" />
+      <img src="./img/pnUOVw5Q_XHOR.png" />
     </div>
     <div class="timeline-divider">
       <div class="dot"></div><div class="line"></div>
@@ -124,7 +124,7 @@
 
   <div class="timeline-item">
     <div class="timeline-left">
-      <img src="/src/img/fG83jj43_h2t6.png" />
+      <img src="./img/fG83jj43_h2t6.png" />
     </div>
     <div class="timeline-divider">
       <div class="dot"></div><div class="line"></div>
@@ -139,7 +139,7 @@
 
   <div class="timeline-item">
     <div class="timeline-left">
-      <img src="/src/img/HAtBDRGV_XCPv.png" />
+      <img src="./img/HAtBDRGV_XCPv.png" />
     </div>
     <div class="timeline-divider">
       <div class="dot"></div><div class="line"></div>
@@ -154,7 +154,7 @@
 
   <div class="timeline-item">
     <div class="timeline-left">
-      <img src="/src/img/IUewvT9I_SbvA.png" />
+      <img src="./img/IUewvT9I_SbvA.png" />
     </div>
     <div class="timeline-divider">
       <div class="dot"></div><div class="line"></div>
@@ -169,7 +169,7 @@
 
   <div class="timeline-item">
     <div class="timeline-left">
-      <img src="/src/img/ASO5kr8y_qVMm.png" />
+      <img src="./img/ASO5kr8y_qVMm.png" />
     </div>
     <div class="timeline-divider">
       <div class="dot"></div><div class="line"></div>
@@ -196,7 +196,7 @@
     </div>
   </div>
 </div>
-`,Ya=`<video src="/c836787fa55544c0824c49e9091a8541_spd.mp4" controls autoplay muted style="width: 100%; margin-bottom: 10px;"></video>
+`,Ya=`<video src="./c836787fa55544c0824c49e9091a8541_spd.mp4" controls autoplay muted style="width: 100%; margin-bottom: 10px;"></video>
 <p style="font-size: 0.16rem; font-family: 宋体; margin-bottom: 10px; line-height: 1.6; color: #333;">2013年，国家主席习近平提出了“一带一路”倡议。作为“一带一路”的重要支点，霍尔果斯的发展势头愈发迅猛。</p>
 <p style="font-size: 0.16rem; font-family: 宋体; margin-bottom: 10px; line-height: 1.6; color: #333;">2016年，霍尔果斯口岸开行中欧班列，将中国制造带向世界。自开行以来，经霍尔果斯口岸出入境中欧班列从2016年600余列次上涨到2020年的4727列，2020年过货量662万吨。</p>`,Qa=`<section data-role="outer" class="article135" label="edit by 135editor">
 	<section data-role="paragraph" class="_135editor">
@@ -207,10 +207,10 @@
 			2023年11月1日，中国（新疆）自由贸易试验区揭牌，霍尔果斯片区是新疆自贸试验区重要组成部分，霍尔果斯片区总面积16.58平方公里（含新疆生产建设兵团第四师1.95平方公里；含合作中心中方区2.34平方公里及霍尔果斯综合保税区3.61平方公里），四至范围东起兵团大道，西至纵一路，南起环南路北侧，北至横二路南侧。根据功能定位和产业形态，霍尔果斯片区划分为综合保税区、合作中心、铁路口岸、公路口岸和兵团四师五个功能区域。
 		</p>
 		<p>
-			<img src="/src/img/PZ6cwADa_wwtr.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.5614457831325301" data-w="830"/>
+			<img src="./img/PZ6cwADa_wwtr.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.5614457831325301" data-w="830"/>
 		</p>
 		<p>
-			<img src="/src/img/G3LkXMxy_kGnJ.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="1.121875" data-w="640"/>
+			<img src="./img/G3LkXMxy_kGnJ.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="1.121875" data-w="640"/>
 		</p>
 		<p>
 			01区位优势显著
@@ -249,16 +249,16 @@
 			中哈霍尔果斯国际边境合作中心是中哈两国领导人2003年达成的国家级合作项目，是我国与其他国家建立的首个跨境经济合作区。合作区总面积5.6平方公里，其中中方区3.43平方公里，哈方区2.17平方公里，中哈两国公民和第三国公民，无需办理签证，可持护照或出入境通行证等有效证件，即可出入，实现面对面的商贸洽谈和商品交易。这里汇聚了来自世界各地的上万种商品，涉及服装配饰、鞋帽箱包、建材家居、美容护肤、食品百货等品类，汇集深圳免税、欧洲免税、意大利免税等200余家免税店，销售来自欧美、日韩、俄哈等40余个国家的免税商品，是新疆著名的跨境旅游胜地和购物天堂。
 		</p>
 		<p>
-			<img src="/src/img/RWHBIVjI_GzCp.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.6377858002406739" data-w="831"/>
+			<img src="./img/RWHBIVjI_GzCp.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.6377858002406739" data-w="831"/>
 		</p>
 		<p>
-			<img src="/src/img/hOedknZV_KhRs.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.6630565583634176" data-w="831"/>
+			<img src="./img/hOedknZV_KhRs.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.6630565583634176" data-w="831"/>
 		</p>
 		<p>
-			<img src="/src/img/aGGnrbgm_jtOO.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.6650602409638554" data-w="830"/>
+			<img src="./img/aGGnrbgm_jtOO.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.6650602409638554" data-w="830"/>
 		</p>
 		<p>
-			<img src="/src/img/K8cmNpKZ_fYOO.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.6586248492159228" data-w="829"/>
+			<img src="./img/K8cmNpKZ_fYOO.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.6586248492159228" data-w="829"/>
 		</p>
 	</section>
 </section>`,ec=`<section data-role="outer" class="article135" label="edit by 135editor">
@@ -288,7 +288,7 @@
 			霍尔果斯美不胜收
 		</p>
 		<p>
-			<img src="/src/img/ppyKBYGS_Yrvb.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.5625" data-w="800"/>
+			<img src="./img/ppyKBYGS_Yrvb.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.5625" data-w="800"/>
 		</p>
 		<p>
 			每一盏灯
@@ -297,7 +297,7 @@
 			都在点亮千家万户的幸福
 		</p>
 		<p>
-			<img src="/src/img/C9GO3DDS_Ty9A.png" style="vertical-align:baseline;" alt="image.png" draggable="false" data-ratio="0.5631067961165048" data-w="824"/>
+			<img src="./img/C9GO3DDS_Ty9A.png" style="vertical-align:baseline;" alt="image.png" draggable="false" data-ratio="0.5631067961165048" data-w="824"/>
 		</p>
 		<p style="margin-top:0;margin-right:0;margin-bottom:0;padding:0 0 0 0">
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">人来人往</span></span>
@@ -309,7 +309,7 @@
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">以及归家的喜悦</span></span>
 		</p>
 		<p>
-			<img src="/src/img/NHhs5zwZ_vb2A.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.75" data-w="760"/>
+			<img src="./img/NHhs5zwZ_vb2A.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.75" data-w="760"/>
 		</p>
 		<p style="margin-top:0;margin-right:0;margin-bottom:0;padding:0 0 0 0">
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">每一个普通的日子</span></span>
@@ -318,7 +318,7 @@
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">都在美好中奔赴美好</span></span>
 		</p>
 		<p>
-			<img src="/src/img/XFcQTcs8_kUFc.png" style="vertical-align:baseline;" alt="image.png" draggable="false" data-ratio="0.5626506024096386" data-w="830"/>
+			<img src="./img/XFcQTcs8_kUFc.png" style="vertical-align:baseline;" alt="image.png" draggable="false" data-ratio="0.5626506024096386" data-w="830"/>
 		</p>
 	</section>
 	<section class="_135editor" data-role="paragraph">
@@ -329,7 +329,7 @@
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">不问西东</span> <span style="font-family:宋体;">感受真意</span></span>
 		</p>
 		<p>
-			<img src="/src/img/rDpr99ss_dJNq.png" style="vertical-align:baseline;" alt="image.png" draggable="false" data-ratio="0.5631067961165048" data-w="824"/>
+			<img src="./img/rDpr99ss_dJNq.png" style="vertical-align:baseline;" alt="image.png" draggable="false" data-ratio="0.5631067961165048" data-w="824"/>
 		</p>
 		<p style="margin-top:0;margin-right:0;margin-bottom:0;padding:0 0 0 0;text-align:left;" align="left">
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">总有一条路</span></span>
@@ -338,7 +338,7 @@
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">见证着城市的发展记录着城市的繁荣</span></span>
 		</p>
 		<p>
-			<img src="/src/img/WZ2pbXXU_EK2Y.png" style="vertical-align:baseline;" alt="image.png" draggable="false" data-ratio="0.5631768953068592" data-w="831"/>
+			<img src="./img/WZ2pbXXU_EK2Y.png" style="vertical-align:baseline;" alt="image.png" draggable="false" data-ratio="0.5631768953068592" data-w="831"/>
 		</p>
 		<p style="margin-top:0;margin-right:0;margin-bottom:0;padding:0 0 0 0;text-align:left;" align="left">
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">山水交织</span> <span style="font-family:宋体;">刚柔冲撞</span></span>
@@ -347,7 +347,7 @@
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">五味调和</span> <span style="font-family:宋体;">甘之如饴</span></span>
 		</p>
 		<p>
-			<img src="/src/img/RamVh6tO_WsqK.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.75" data-w="824"/>
+			<img src="./img/RamVh6tO_WsqK.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;max-width:100% !important;" alt="image.png" draggable="false" data-ratio="0.75" data-w="824"/>
 		</p>
 		<p style="margin-top:0;margin-right:0;margin-bottom:0;padding:0 0 0 0;text-align:left;" align="left">
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">生活在这里</span></span>
@@ -362,4 +362,4 @@
 			<span style=";font-size: 0.16rem;font-family:宋体;"><span style="font-family:宋体;">你能听到城市生长拔节的声音</span></span>
 		</p>
 	</section>
-</section>`,nc='<section data-role="outer" class="article135" label="edit by 135editor"><section data-role="paragraph" class="_135editor"><p>智慧治理指挥中心</p></section><p>“智慧治理指挥中心”是霍尔果斯统筹城市治理各条战线的数字化集合体。它不是一个独立的实体机构，而是汇聚城市管理、政务服务、基层治理、社会治安、应急安全等多部门力量，各司其职、协同联动、数据互通，共同构成城市治理的“神经中枢”。</p><p>城市管理部门依托智慧城管平台，构建“信息收集、案件立案、任务派遣、处理处置、结果反馈、核查结案、综合评价”七环节闭环处置体系，城市管理问题一网统管、全程可溯。平台上线以来，累计受理处置城市各类问题4183件，办结案件3858件，结案率达99.38%，实现城市问题精准发现、快速处置、常态管控。</p><p style="text-align:center;"><img src="/src/img/t5xCV4xj_gyrU.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;" alt="微信图片_2026-08-29_193614_878.png" _src="/src/img/t5xCV4xj_gyrU.png"/></p><p style="text-align:center;"><img src="/src/img/eqtdCjNj_OELV.jpg" style="vertical-align: baseline; width: 100%;box-sizing:border-box;" alt="城市小管家业务流程闭环图（可编辑源文件） (1).jpg" _src="/src/img/eqtdCjNj_OELV.jpg"/></p><p>政务服务部门推进“一网通办”，持续压缩办事时限、提升服务效能；政法综治部门坚持和发展新时代“枫桥经验”，依托网格化体系推动矛盾纠纷源头化解；公安部门构建立体化治安防控网络，织密口岸与城市安全防线；应急管理部门强化安全生产监管和应急指挥调度，提升突发事件处置能力。</p><p>各条线业务汇聚于统一的数字底座，形成“城市运行一网统管、政务服务一网通办、基层治理一张网、城市安全一盘棋”的现代化治理体系，为精致口岸城市建设提供坚实支撑。</p><p><br/></p></section>',sc='<section data-role="outer" class="article135" label="edit by 135editor"><section data-role="paragraph" class="_135editor"><p>未来规划蓝图</p></section><p>未来规划蓝图描绘霍尔果斯从“数字化”迈向“智慧化”的演进路径。霍尔果斯将深入推进智慧城市建设，持续完善智慧城管系统平台，构建全要素“数字孪生城市”一网通管体系，推动城市治理向“感知全域、智能研判、精准施策”升级。</p><p><img src="/src/img/mRbZBKKx_ydzX.png" style="vertical-align:baseline;" alt="未来规划蓝图_远景规划图1.png" _src="/src/img/mRbZBKKx_ydzX.png"/><img src="/src/img/mySVNN3L_fdVB.png" style="vertical-align:baseline;" alt="未来规划蓝图_分期路线图1.png" _src="/src/img/mySVNN3L_fdVB.png"/></p><p>以“云港·霍数通”智慧口岸综合服务平台为支撑，整合政务办理、口岸监管等核心业务，实现“一点接入、数据共享、一站服务”，打造智慧通关、智慧物流、智慧文旅、智慧社区协同发展的现代化城市。</p><p>聚焦城市运行重点领域，加快智慧井盖、智慧路灯、智慧环卫、智慧管网、智慧燃气、智慧水务和城市运行监测等应用落地，推动城市管理全要素数字化、全流程智能化。未来，霍尔果斯将全面融入数字新疆“1652”总体架构，以数据要素驱动城市治理现代化，为打造市场化、法治化、国际化一流营商环境提供坚实数字底座。</p></section>',ic={class:"app-shell"},lc={class:"header-left"},rc={class:"time-update"},oc={class:"update-time"},ac={class:"header-right"},cc={class:"current-time"},fc={class:"scroll-wrapper"},dc={class:"panoramic-container"},uc=["onClick"],pc={class:"marker-img-container"},gc=["src"],mc=["innerHTML"],hc={class:"modal-stats"},vc={class:"stat-value"},yc={class:"stat-label"},bc={key:0,class:"right-popup"},_c={class:"right-popup-inner"},xc={class:"popup-title"},wc={class:"popup-content"},Cc={class:"flexdvv"},Sc=["onClick"],Tc={class:"nav-text"},Ac={__name:"App",setup(t){const e=ct(null);let n=null;const s=U=>{const T=()=>{e.value&&(U==="left"?e.value.scrollLeft-=15:e.value.scrollLeft+=15),n=requestAnimationFrame(T)};T()},i=()=>{n&&(cancelAnimationFrame(n),n=null)},l=ct(!1),r=ct("2026/07/03"),o=ct("2026/07/03"),a=ct(null),u=ct(!0),f=ct(!1),p=ct(""),_=[xa,Aa,Pa,$a,Va],C=ct(["数字党建","数字政务","数字经济","数字社会","数字文化","平安霍尔果斯"]),D=ct(!1),M=ct(0),J=ct(0),V=U=>{e.value&&(U.preventDefault(),M.value=U.pageX-e.value.offsetLeft,J.value=e.value.scrollLeft,window.addEventListener("mousemove",j),window.addEventListener("mouseup",k))},j=U=>{if(!e.value)return;const P=U.pageX-e.value.offsetLeft;if(Math.abs(P-M.value)>5&&(D.value=!0),!D.value)return;U.preventDefault();const T=(P-M.value)*1.5;requestAnimationFrame(()=>{e.value&&(e.value.scrollLeft=J.value-T)})},k=()=>{setTimeout(()=>{D.value=!1},50),window.removeEventListener("mousemove",j),window.removeEventListener("mouseup",k)},O=()=>{u.value=!0,f.value=!1,setTimeout(()=>{u.value=!1,f.value=!0},3800)};let z=null;ms(()=>{O(),z=setInterval(()=>{const U=new Date,P=U.getFullYear(),T=String(U.getMonth()+1).padStart(2,"0"),N=String(U.getDate()).padStart(2,"0");String(U.getHours()).padStart(2,"0"),String(U.getMinutes()).padStart(2,"0"),o.value=`${P}/${T}/${N}`},1e3)}),hs(()=>{z&&clearInterval(z)});const lt=ct([{id:1,x:5.8,y:61.5,title:"古驿站遗址",bgImg:"/Frame 417@2x.png",desc:"古代丝绸之路重要的商埠与通关驿站，见证千年丝路文明与商业贸易繁荣。",stats:[{label:"建驿历史",value:"1000+年"},{label:"遗址面积",value:"15.6公顷"}],htmlContent:Ja},{id:2,x:14.5,y:57,title:"六代国门",bgImg:"/Frame 422@2x.png",desc:"霍尔果斯历经六代国门的建设与演变，展现了中国边境口岸的沧桑巨变与辉煌发展。",stats:[{label:"演进历程",value:"6代迭代"},{label:"通关能力",value:"提升100倍"}],htmlContent:Xa},{id:4,x:29.5,y:80,title:"公路口岸通关区",bgImg:"/Frame 418@2x.png",desc:"高效智能的现代公路物流通关区，集查验、通关、物流于一体，实现快速高效通关。",stats:[{label:"日均通关车次",value:"2500+辆"},{label:"平均通关时间",value:"15分钟"}]},{id:5,x:20,y:76.5,title:"中欧班列",bgImg:"/Frame 425@2x.png",desc:"亚欧陆路交通干线核心枢纽节点，累计开行中欧班列数万列，辐射欧亚多个国家。",stats:[{label:"开行线路",value:"75条"},{label:"通达国家",value:"18个"}],htmlContent:Ya},{id:8,x:44.8,y:41,title:"经济开发区",bgImg:"/Frame 426@2x.png",desc:"国家级经济开发区，推动跨境产业与新兴工业全产业链高质量发展。",stats:[{label:"开发区面积",value:"73k㎡"},{label:"投产项目",value:"210个"}]},{id:9,x:52.5,y:70.5,title:"自贸区",bgImg:"/Frame 429@2x.png",desc:"中国（新疆）自由贸易试验区霍尔果斯片区。",stats:[{label:"企业注册",value:"1200+"},{label:"政策扶持",value:"全方位"}],htmlContent:Qa},{id:11,x:65.5,y:54.5,title:"中哈合作中心",bgImg:"/Frame 430@2x.png",desc:"全球首个跨国边境自由贸易合作区，实现中哈两国人员、车辆与货物的自由流动。",stats:[{label:"免税额度",value:"8000元/人"},{label:"日均客流",value:"2.5万人"}],htmlContent:tc},{id:12,x:73.2,y:36,title:"城市天际线",bgImg:"/Frame 419@2x.png",desc:"展现现代化口岸新城向现代化高科技城市迈进的雄伟城市轮廓。",stats:[{label:"建筑地标",value:"12座"},{label:"绿化覆盖率",value:"42%"}],htmlContent:ec},{id:13,x:90,y:67.5,title:"智慧治理指挥中心",bgImg:"/Frame 420@2x.png",desc:"依托大屏监控与全域感知系统，实现口岸人流、物流、车流及城市的精细化全天候运营管理。",stats:[{label:"全域感知设备",value:"12000+"},{label:"事件处置率",value:"99.8%"}],htmlContent:nc},{id:14,x:77,y:89,title:"产业园区",bgImg:"/Frame 427@2x.png",desc:"涵盖先进制造、农产品深加工、高端装备制造的跨境优势产业集群。",stats:[{label:"产值规模",value:"180亿元"},{label:"科技企业",value:"68家"}]},{id:15,x:95.5,y:82,title:"未来规划蓝图",bgImg:"/Frame 428@2x.png",desc:"立足亚欧黄金通道，规划打造全球顶级的绿色、智能、人文、包容的国际一流智慧口岸。",stats:[{label:"规划面积",value:"120k㎡"},{label:"远期贸易额",value:"1000亿"}],htmlContent:sc}]);return(U,P)=>(W(),Z("div",ic,[A("div",{class:Et(["scroll-container",{"is-night":l.value}])},[A("header",{class:Et(["header",{"is-opening":u.value,"is-opened":f.value}])},[A("div",lc,[A("div",rc,[P[5]||(P[5]=A("div",{class:"icon-refresh"},[A("img",{src:aa,alt:""})],-1)),A("div",oc,"更新时间："+Ct(r.value),1)])]),P[8]||(P[8]=A("div",{class:"header-center"},[A("img",{src:ca,alt:"霍尔果斯口岸数字名片",class:"header-title-img"})],-1)),A("div",ac,[A("div",cc,[P[6]||(P[6]=A("div",{class:"icon-clock"},[A("img",{src:fa,alt:""})],-1)),A("div",null,Ct(o.value),1)]),P[7]||(P[7]=A("div",{class:"weather-info"},[A("div",{class:"icon-weather"},[A("img",{src:da,alt:""})]),A("div",null,"24~32°C")],-1))])],2),A("div",{class:Et(["scroll-handle handle-left",{"is-opening":u.value,"is-opened":f.value}]),onMouseenter:P[0]||(P[0]=T=>s("left")),onMouseleave:i},[...P[9]||(P[9]=[A("img",{src:ua,alt:""},null,-1)])],34),A("div",{class:Et(["scroll-handle handle-right",{"is-opening":u.value,"is-opened":f.value}]),onMouseenter:P[1]||(P[1]=T=>s("right")),onMouseleave:i},[...P[10]||(P[10]=[A("img",{src:pa,alt:""},null,-1)])],34),A("div",{class:Et(["ratio-box",{"is-opening":u.value,"is-opened":f.value}])},[A("div",fc,[A("div",{class:Et(["scroll-content",{"is-dragging":D.value}]),ref_key:"scrollContainer",ref:e,onMousedown:V},[A("div",dc,[P[12]||(P[12]=re('<img src="'+ga+'" alt="霍尔果斯口岸全景图" class="panoramic-bg" data-v-2ebfb7ac><div class="tourist-card" data-v-2ebfb7ac><div class="tourist-header" data-v-2ebfb7ac><span class="eye-icon" data-v-2ebfb7ac>👁️</span><span class="tourist-title" data-v-2ebfb7ac>观光旅游人数</span></div><div class="tourist-num" data-v-2ebfb7ac>1,121 <span class="unit" data-v-2ebfb7ac>人</span></div><div class="tourist-compare" data-v-2ebfb7ac><span data-v-2ebfb7ac>环比</span><span class="trend-up" data-v-2ebfb7ac>▲ 12.5%</span></div></div>',2)),pt(Ka,{style:{top:"3.1rem",left:"11.5rem"}}),pt(Za,{style:{top:"3.1rem",left:"34rem"}}),(W(!0),Z(ot,null,ie(lt.value,T=>(W(),Z("div",{key:T.id,class:"map-marker",style:Cn({left:T.x+"%",top:T.y+"%"}),onClick:N=>a.value=T},[A("div",pc,[A("img",{src:T.bgImg,class:"marker-bg-img",alt:""},null,8,gc),P[11]||(P[11]=A("span",{class:"marker-overlay-title"},null,-1))])],12,uc))),128))])],34)])],2),a.value?(W(),Z("div",{key:0,class:"marker-modal-backdrop",onClick:P[3]||(P[3]=na(T=>a.value=null,["self"]))},[A("div",{class:Et(["marker-modal",{"html-modal":a.value.htmlContent}])},[A("button",{class:"modal-close",onClick:P[2]||(P[2]=T=>a.value=null)},"✕"),A("h3",null,Ct(a.value.title),1),P[13]||(P[13]=A("div",{class:"modal-divider"},null,-1)),a.value.htmlContent?(W(),Z("div",{key:0,class:"modal-html-content custom-scrollbar",innerHTML:a.value.htmlContent},null,8,mc)):(W(),Z(ot,{key:1},[A("p",null,Ct(a.value.desc),1),A("div",hc,[(W(!0),Z(ot,null,ie(a.value.stats,(T,N)=>(W(),Z("div",{class:"stat-item",key:N},[A("span",vc,Ct(T.value),1),A("span",yc,Ct(T.label),1)]))),128))])],64))],2)])):an("",!0),pt(Io,{name:"slide-right"},{default:$i(()=>[p.value!==""&&p.value!==null?(W(),Z("div",bc,[A("div",_c,[P[14]||(P[14]=A("img",{class:"popup-bg",src:ma,alt:"",draggable:"false"},null,-1)),A("img",{class:"popup-close",src:ha,onClick:P[4]||(P[4]=T=>p.value=""),alt:"close",draggable:"false"}),A("div",xc,Ct(C.value[p.value]),1),A("div",wc,[p.value!==""&&p.value!==null?(W(),gl(Rr(_[p.value]),{key:0})):an("",!0)])])])):an("",!0)]),_:1}),A("footer",{class:Et(["scroll-footer",{"is-opening":u.value,"is-opened":f.value}])},[A("div",Cc,[(W(!0),Z(ot,null,ie(C.value,(T,N)=>(W(),Z("div",{key:N,class:Et(["footer-nav-cell",{active:p.value===N}]),onClick:et=>p.value=N},[A("span",Tc,Ct(T),1)],10,Sc))),128))])],2)],2)]))}},Ec=oe(Ac,[["__scopeId","data-v-2ebfb7ac"]]);la(Ec).mount("#app");
+</section>`,nc='<section data-role="outer" class="article135" label="edit by 135editor"><section data-role="paragraph" class="_135editor"><p>智慧治理指挥中心</p></section><p>“智慧治理指挥中心”是霍尔果斯统筹城市治理各条战线的数字化集合体。它不是一个独立的实体机构，而是汇聚城市管理、政务服务、基层治理、社会治安、应急安全等多部门力量，各司其职、协同联动、数据互通，共同构成城市治理的“神经中枢”。</p><p>城市管理部门依托智慧城管平台，构建“信息收集、案件立案、任务派遣、处理处置、结果反馈、核查结案、综合评价”七环节闭环处置体系，城市管理问题一网统管、全程可溯。平台上线以来，累计受理处置城市各类问题4183件，办结案件3858件，结案率达99.38%，实现城市问题精准发现、快速处置、常态管控。</p><p style="text-align:center;"><img src="./img/t5xCV4xj_gyrU.png" style="vertical-align: baseline; width: 100%;box-sizing:border-box;" alt="微信图片_2026-08-29_193614_878.png" _src="./img/t5xCV4xj_gyrU.png"/></p><p style="text-align:center;"><img src="./img/eqtdCjNj_OELV.jpg" style="vertical-align: baseline; width: 100%;box-sizing:border-box;" alt="城市小管家业务流程闭环图（可编辑源文件） (1).jpg" _src="./img/eqtdCjNj_OELV.jpg"/></p><p>政务服务部门推进“一网通办”，持续压缩办事时限、提升服务效能；政法综治部门坚持和发展新时代“枫桥经验”，依托网格化体系推动矛盾纠纷源头化解；公安部门构建立体化治安防控网络，织密口岸与城市安全防线；应急管理部门强化安全生产监管和应急指挥调度，提升突发事件处置能力。</p><p>各条线业务汇聚于统一的数字底座，形成“城市运行一网统管、政务服务一网通办、基层治理一张网、城市安全一盘棋”的现代化治理体系，为精致口岸城市建设提供坚实支撑。</p><p><br/></p></section>',sc='<section data-role="outer" class="article135" label="edit by 135editor"><section data-role="paragraph" class="_135editor"><p>未来规划蓝图</p></section><p>未来规划蓝图描绘霍尔果斯从“数字化”迈向“智慧化”的演进路径。霍尔果斯将深入推进智慧城市建设，持续完善智慧城管系统平台，构建全要素“数字孪生城市”一网通管体系，推动城市治理向“感知全域、智能研判、精准施策”升级。</p><p><img src="./img/mRbZBKKx_ydzX.png" style="vertical-align:baseline;" alt="未来规划蓝图_远景规划图1.png" _src="./img/mRbZBKKx_ydzX.png"/><img src="./img/mySVNN3L_fdVB.png" style="vertical-align:baseline;" alt="未来规划蓝图_分期路线图1.png" _src="./img/mySVNN3L_fdVB.png"/></p><p>以“云港·霍数通”智慧口岸综合服务平台为支撑，整合政务办理、口岸监管等核心业务，实现“一点接入、数据共享、一站服务”，打造智慧通关、智慧物流、智慧文旅、智慧社区协同发展的现代化城市。</p><p>聚焦城市运行重点领域，加快智慧井盖、智慧路灯、智慧环卫、智慧管网、智慧燃气、智慧水务和城市运行监测等应用落地，推动城市管理全要素数字化、全流程智能化。未来，霍尔果斯将全面融入数字新疆“1652”总体架构，以数据要素驱动城市治理现代化，为打造市场化、法治化、国际化一流营商环境提供坚实数字底座。</p></section>',ic={class:"app-shell"},lc={class:"header-left"},rc={class:"time-update"},oc={class:"update-time"},ac={class:"header-right"},cc={class:"current-time"},fc={class:"scroll-wrapper"},dc={class:"panoramic-container"},uc=["onClick"],pc={class:"marker-img-container"},gc=["src"],mc=["innerHTML"],hc={class:"modal-stats"},vc={class:"stat-value"},yc={class:"stat-label"},bc={key:0,class:"right-popup"},_c={class:"right-popup-inner"},xc={class:"popup-title"},wc={class:"popup-content"},Cc={class:"flexdvv"},Sc=["onClick"],Tc={class:"nav-text"},Ac={__name:"App",setup(t){const e=ct(null);let n=null;const s=U=>{const T=()=>{e.value&&(U==="left"?e.value.scrollLeft-=15:e.value.scrollLeft+=15),n=requestAnimationFrame(T)};T()},i=()=>{n&&(cancelAnimationFrame(n),n=null)},l=ct(!1),r=ct("2026/07/03"),o=ct("2026/07/03"),a=ct(null),u=ct(!0),f=ct(!1),p=ct(""),_=[xa,Aa,Pa,$a,Va],C=ct(["数字党建","数字政务","数字经济","数字社会","数字文化","平安霍尔果斯"]),D=ct(!1),M=ct(0),J=ct(0),V=U=>{e.value&&(U.preventDefault(),M.value=U.pageX-e.value.offsetLeft,J.value=e.value.scrollLeft,window.addEventListener("mousemove",j),window.addEventListener("mouseup",k))},j=U=>{if(!e.value)return;const P=U.pageX-e.value.offsetLeft;if(Math.abs(P-M.value)>5&&(D.value=!0),!D.value)return;U.preventDefault();const T=(P-M.value)*1.5;requestAnimationFrame(()=>{e.value&&(e.value.scrollLeft=J.value-T)})},k=()=>{setTimeout(()=>{D.value=!1},50),window.removeEventListener("mousemove",j),window.removeEventListener("mouseup",k)},O=()=>{u.value=!0,f.value=!1,setTimeout(()=>{u.value=!1,f.value=!0},3800)};let z=null;ms(()=>{O(),z=setInterval(()=>{const U=new Date,P=U.getFullYear(),T=String(U.getMonth()+1).padStart(2,"0"),N=String(U.getDate()).padStart(2,"0");String(U.getHours()).padStart(2,"0"),String(U.getMinutes()).padStart(2,"0"),o.value=`${P}/${T}/${N}`},1e3)}),hs(()=>{z&&clearInterval(z)});const lt=ct([{id:1,x:5.8,y:61.5,title:"古驿站遗址",bgImg:"./Frame 417@2x.png",desc:"古代丝绸之路重要的商埠与通关驿站，见证千年丝路文明与商业贸易繁荣。",stats:[{label:"建驿历史",value:"1000+年"},{label:"遗址面积",value:"15.6公顷"}],htmlContent:Ja},{id:2,x:14.5,y:57,title:"六代国门",bgImg:"./Frame 422@2x.png",desc:"霍尔果斯历经六代国门的建设与演变，展现了中国边境口岸的沧桑巨变与辉煌发展。",stats:[{label:"演进历程",value:"6代迭代"},{label:"通关能力",value:"提升100倍"}],htmlContent:Xa},{id:4,x:29.5,y:80,title:"公路口岸通关区",bgImg:"./Frame 418@2x.png",desc:"高效智能的现代公路物流通关区，集查验、通关、物流于一体，实现快速高效通关。",stats:[{label:"日均通关车次",value:"2500+辆"},{label:"平均通关时间",value:"15分钟"}]},{id:5,x:20,y:76.5,title:"中欧班列",bgImg:"./Frame 425@2x.png",desc:"亚欧陆路交通干线核心枢纽节点，累计开行中欧班列数万列，辐射欧亚多个国家。",stats:[{label:"开行线路",value:"75条"},{label:"通达国家",value:"18个"}],htmlContent:Ya},{id:8,x:44.8,y:41,title:"经济开发区",bgImg:"./Frame 426@2x.png",desc:"国家级经济开发区，推动跨境产业与新兴工业全产业链高质量发展。",stats:[{label:"开发区面积",value:"73k㎡"},{label:"投产项目",value:"210个"}]},{id:9,x:52.5,y:70.5,title:"自贸区",bgImg:"./Frame 429@2x.png",desc:"中国（新疆）自由贸易试验区霍尔果斯片区。",stats:[{label:"企业注册",value:"1200+"},{label:"政策扶持",value:"全方位"}],htmlContent:Qa},{id:11,x:65.5,y:54.5,title:"中哈合作中心",bgImg:"./Frame 430@2x.png",desc:"全球首个跨国边境自由贸易合作区，实现中哈两国人员、车辆与货物的自由流动。",stats:[{label:"免税额度",value:"8000元/人"},{label:"日均客流",value:"2.5万人"}],htmlContent:tc},{id:12,x:73.2,y:36,title:"城市天际线",bgImg:"./Frame 419@2x.png",desc:"展现现代化口岸新城向现代化高科技城市迈进的雄伟城市轮廓。",stats:[{label:"建筑地标",value:"12座"},{label:"绿化覆盖率",value:"42%"}],htmlContent:ec},{id:13,x:90,y:67.5,title:"智慧治理指挥中心",bgImg:"./Frame 420@2x.png",desc:"依托大屏监控与全域感知系统，实现口岸人流、物流、车流及城市的精细化全天候运营管理。",stats:[{label:"全域感知设备",value:"12000+"},{label:"事件处置率",value:"99.8%"}],htmlContent:nc},{id:14,x:77,y:89,title:"产业园区",bgImg:"./Frame 427@2x.png",desc:"涵盖先进制造、农产品深加工、高端装备制造的跨境优势产业集群。",stats:[{label:"产值规模",value:"180亿元"},{label:"科技企业",value:"68家"}]},{id:15,x:95.5,y:82,title:"未来规划蓝图",bgImg:"./Frame 428@2x.png",desc:"立足亚欧黄金通道，规划打造全球顶级的绿色、智能、人文、包容的国际一流智慧口岸。",stats:[{label:"规划面积",value:"120k㎡"},{label:"远期贸易额",value:"1000亿"}],htmlContent:sc}]);return(U,P)=>(W(),Z("div",ic,[A("div",{class:Et(["scroll-container",{"is-night":l.value}])},[A("header",{class:Et(["header",{"is-opening":u.value,"is-opened":f.value}])},[A("div",lc,[A("div",rc,[P[5]||(P[5]=A("div",{class:"icon-refresh"},[A("img",{src:aa,alt:""})],-1)),A("div",oc,"更新时间："+Ct(r.value),1)])]),P[8]||(P[8]=A("div",{class:"header-center"},[A("img",{src:ca,alt:"霍尔果斯口岸数字名片",class:"header-title-img"})],-1)),A("div",ac,[A("div",cc,[P[6]||(P[6]=A("div",{class:"icon-clock"},[A("img",{src:fa,alt:""})],-1)),A("div",null,Ct(o.value),1)]),P[7]||(P[7]=A("div",{class:"weather-info"},[A("div",{class:"icon-weather"},[A("img",{src:da,alt:""})]),A("div",null,"24~32°C")],-1))])],2),A("div",{class:Et(["scroll-handle handle-left",{"is-opening":u.value,"is-opened":f.value}]),onMouseenter:P[0]||(P[0]=T=>s("left")),onMouseleave:i},[...P[9]||(P[9]=[A("img",{src:ua,alt:""},null,-1)])],34),A("div",{class:Et(["scroll-handle handle-right",{"is-opening":u.value,"is-opened":f.value}]),onMouseenter:P[1]||(P[1]=T=>s("right")),onMouseleave:i},[...P[10]||(P[10]=[A("img",{src:pa,alt:""},null,-1)])],34),A("div",{class:Et(["ratio-box",{"is-opening":u.value,"is-opened":f.value}])},[A("div",fc,[A("div",{class:Et(["scroll-content",{"is-dragging":D.value}]),ref_key:"scrollContainer",ref:e,onMousedown:V},[A("div",dc,[P[12]||(P[12]=re('<img src="'+ga+'" alt="霍尔果斯口岸全景图" class="panoramic-bg" data-v-2cca7260><div class="tourist-card" data-v-2cca7260><div class="tourist-header" data-v-2cca7260><span class="eye-icon" data-v-2cca7260>👁️</span><span class="tourist-title" data-v-2cca7260>观光旅游人数</span></div><div class="tourist-num" data-v-2cca7260>1,121 <span class="unit" data-v-2cca7260>人</span></div><div class="tourist-compare" data-v-2cca7260><span data-v-2cca7260>环比</span><span class="trend-up" data-v-2cca7260>▲ 12.5%</span></div></div>',2)),pt(Ka,{style:{top:"3.1rem",left:"11.5rem"}}),pt(Za,{style:{top:"3.1rem",left:"34rem"}}),(W(!0),Z(ot,null,ie(lt.value,T=>(W(),Z("div",{key:T.id,class:"map-marker",style:Cn({left:T.x+"%",top:T.y+"%"}),onClick:N=>a.value=T},[A("div",pc,[A("img",{src:T.bgImg,class:"marker-bg-img",alt:""},null,8,gc),P[11]||(P[11]=A("span",{class:"marker-overlay-title"},null,-1))])],12,uc))),128))])],34)])],2),a.value?(W(),Z("div",{key:0,class:"marker-modal-backdrop",onClick:P[3]||(P[3]=na(T=>a.value=null,["self"]))},[A("div",{class:Et(["marker-modal",{"html-modal":a.value.htmlContent}])},[A("button",{class:"modal-close",onClick:P[2]||(P[2]=T=>a.value=null)},"✕"),A("h3",null,Ct(a.value.title),1),P[13]||(P[13]=A("div",{class:"modal-divider"},null,-1)),a.value.htmlContent?(W(),Z("div",{key:0,class:"modal-html-content custom-scrollbar",innerHTML:a.value.htmlContent},null,8,mc)):(W(),Z(ot,{key:1},[A("p",null,Ct(a.value.desc),1),A("div",hc,[(W(!0),Z(ot,null,ie(a.value.stats,(T,N)=>(W(),Z("div",{class:"stat-item",key:N},[A("span",vc,Ct(T.value),1),A("span",yc,Ct(T.label),1)]))),128))])],64))],2)])):an("",!0),pt(Io,{name:"slide-right"},{default:$i(()=>[p.value!==""&&p.value!==null?(W(),Z("div",bc,[A("div",_c,[P[14]||(P[14]=A("img",{class:"popup-bg",src:ma,alt:"",draggable:"false"},null,-1)),A("img",{class:"popup-close",src:ha,onClick:P[4]||(P[4]=T=>p.value=""),alt:"close",draggable:"false"}),A("div",xc,Ct(C.value[p.value]),1),A("div",wc,[p.value!==""&&p.value!==null?(W(),gl(Rr(_[p.value]),{key:0})):an("",!0)])])])):an("",!0)]),_:1}),A("footer",{class:Et(["scroll-footer",{"is-opening":u.value,"is-opened":f.value}])},[A("div",Cc,[(W(!0),Z(ot,null,ie(C.value,(T,N)=>(W(),Z("div",{key:N,class:Et(["footer-nav-cell",{active:p.value===N}]),onClick:et=>p.value=N},[A("span",Tc,Ct(T),1)],10,Sc))),128))])],2)],2)]))}},Ec=oe(Ac,[["__scopeId","data-v-2cca7260"]]);la(Ec).mount("#app");
