@@ -189,11 +189,12 @@ const isOpened = ref(false)
 const currentNavIndex = ref("")
 const panels = [Panel0, Panel1, Panel2, Panel3, Panel4]
 const footerNavs = ref([
-  '驿站溯源',
-  '口岸脉动',
-  '货通四海',
-  '产业新城',
-  '智慧未来'
+  '数字党建',
+  '数字政务',
+  '数字经济',
+  '数字社会',
+  '数字文化',
+  '平安霍尔果斯'
 ])
 
 
@@ -638,9 +639,9 @@ const markers = ref([
 		</p>
 	</section>
 </section>` },
-  { id: 13, x: 90.0, y: 67.5, title: '智慧治理指挥中心', bgImg: '/Frame 420@2x.png', desc: '依托大屏监控与全域感知系统，实现口岸人流、物流、车流及城市的精细化全天候运营管理。', stats: [{ label: '全域感知设备', value: '12000+' }, { label: '事件处置率', value: '99.8%' }] },
+  { id: 13, x: 90.0, y: 67.5, title: '智慧治理指挥中心', bgImg: '/Frame 420@2x.png', desc: '依托大屏监控与全域感知系统，实现口岸人流、物流、车流及城市的精细化全天候运营管理。', stats: [{ label: '全域感知设备', value: '12000+' }, { label: '事件处置率', value: '99.8%' }], htmlContent: `<section data-role="outer" class="article135" label="edit by 135editor"><section data-role="paragraph" class="_135editor"><p>智慧治理指挥中心</p></section><p>“智慧治理指挥中心”是霍尔果斯统筹城市治理各条战线的数字化集合体。它不是一个独立的实体机构，而是汇聚城市管理、政务服务、基层治理、社会治安、应急安全等多部门力量，各司其职、协同联动、数据互通，共同构成城市治理的“神经中枢”。</p><p>城市管理部门依托智慧城管平台，构建“信息收集、案件立案、任务派遣、处理处置、结果反馈、核查结案、综合评价”七环节闭环处置体系，城市管理问题一网统管、全程可溯。平台上线以来，累计受理处置城市各类问题4183件，办结案件3858件，结案率达99.38%，实现城市问题精准发现、快速处置、常态管控。</p><p style="text-align:center;"><img src="https://bexp.135editor.com/files/users/1497/14974597/202608/t5xCV4xj_gyrU.png?auth_key=1788710399-0-0-aa5af941601a51b1b9fe14a3b4cb116a" style="vertical-align: baseline; width: 100%;box-sizing:border-box;" alt="微信图片_2026-08-29_193614_878.png" _src="https://bexp.135editor.com/files/users/1497/14974597/202608/t5xCV4xj_gyrU.png?auth_key=1788710399-0-0-aa5af941601a51b1b9fe14a3b4cb116a"/></p><p style="text-align:center;"><img src="https://bexp.135editor.com/files/users/1497/14974597/202608/eqtdCjNj_OELV.jpg?auth_key=1788710399-0-0-eceab862f189f4c671b6c439d6e3a0be" style="vertical-align: baseline; width: 100%;box-sizing:border-box;" alt="城市小管家业务流程闭环图（可编辑源文件） (1).jpg" _src="https://bexp.135editor.com/files/users/1497/14974597/202608/eqtdCjNj_OELV.jpg?auth_key=1788710399-0-0-eceab862f189f4c671b6c439d6e3a0be"/></p><p>政务服务部门推进“一网通办”，持续压缩办事时限、提升服务效能；政法综治部门坚持和发展新时代“枫桥经验”，依托网格化体系推动矛盾纠纷源头化解；公安部门构建立体化治安防控网络，织密口岸与城市安全防线；应急管理部门强化安全生产监管和应急指挥调度，提升突发事件处置能力。</p><p>各条线业务汇聚于统一的数字底座，形成“城市运行一网统管、政务服务一网通办、基层治理一张网、城市安全一盘棋”的现代化治理体系，为精致口岸城市建设提供坚实支撑。</p><p><br/></p></section>` },
   { id: 14, x: 77.0, y: 89.0, title: '产业园区', bgImg: '/Frame 427@2x.png', desc: '涵盖先进制造、农产品深加工、高端装备制造的跨境优势产业集群。', stats: [{ label: '产值规模', value: '180亿元' }, { label: '科技企业', value: '68家' }] },
-  { id: 15, x: 95.5, y: 82.0, title: '未来规划蓝图', bgImg: '/Frame 428@2x.png', desc: '立足亚欧黄金通道，规划打造全球顶级的绿色、智能、人文、包容的国际一流智慧口岸。', stats: [{ label: '规划面积', value: '120k㎡' }, { label: '远期贸易额', value: '1000亿' }] }
+  { id: 15, x: 95.5, y: 82.0, title: '未来规划蓝图', bgImg: '/Frame 428@2x.png', desc: '立足亚欧黄金通道，规划打造全球顶级的绿色、智能、人文、包容的国际一流智慧口岸。', stats: [{ label: '规划面积', value: '120k㎡' }, { label: '远期贸易额', value: '1000亿' }], htmlContent: `<section data-role="outer" class="article135" label="edit by 135editor"><section data-role="paragraph" class="_135editor"><p>未来规划蓝图</p></section><p>未来规划蓝图描绘霍尔果斯从“数字化”迈向“智慧化”的演进路径。霍尔果斯将深入推进智慧城市建设，持续完善智慧城管系统平台，构建全要素“数字孪生城市”一网通管体系，推动城市治理向“感知全域、智能研判、精准施策”升级。</p><p><img src="https://bexp.135editor.com/files/users/1497/14974597/202608/mRbZBKKx_ydzX.png?auth_key=1788710399-0-0-1eeec417fc43b356e9482481e9eb3fb8" style="vertical-align:baseline;" alt="未来规划蓝图_远景规划图1.png" _src="https://bexp.135editor.com/files/users/1497/14974597/202608/mRbZBKKx_ydzX.png?auth_key=1788710399-0-0-1eeec417fc43b356e9482481e9eb3fb8"/><img src="https://bexp.135editor.com/files/users/1497/14974597/202608/mySVNN3L_fdVB.png?auth_key=1788710399-0-0-ea700912e132ab93392864e6830b2ecd" style="vertical-align:baseline;" alt="未来规划蓝图_分期路线图1.png" _src="https://bexp.135editor.com/files/users/1497/14974597/202608/mySVNN3L_fdVB.png?auth_key=1788710399-0-0-ea700912e132ab93392864e6830b2ecd"/></p><p>以“云港·霍数通”智慧口岸综合服务平台为支撑，整合政务办理、口岸监管等核心业务，实现“一点接入、数据共享、一站服务”，打造智慧通关、智慧物流、智慧文旅、智慧社区协同发展的现代化城市。</p><p>聚焦城市运行重点领域，加快智慧井盖、智慧路灯、智慧环卫、智慧管网、智慧燃气、智慧水务和城市运行监测等应用落地，推动城市管理全要素数字化、全流程智能化。未来，霍尔果斯将全面融入数字新疆“1652”总体架构，以数据要素驱动城市治理现代化，为打造市场化、法治化、国际化一流营商环境提供坚实数字底座。</p></section>` }
 ])
 </script>
 
