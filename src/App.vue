@@ -68,8 +68,8 @@
               </div>
 
               <!-- 数据面板 -->
-              <DataBox style="top: 1.1rem; left: 3rem;" />
-              <DataBoxIndustry style="top: 1.1rem; left: 7rem;" />
+              <DataBox style="top: 3.1rem; left: 11.5rem;" />
+              <DataBoxIndustry style="top: 3.1rem; left: 34rem;" />
 
               <!-- 地标与功能区热点标注标签 -->
               <div 
@@ -951,8 +951,8 @@ const markers = ref([
 /* 左上角观光旅游人数统计卡片 */
 .tourist-card {
   position: absolute;
-  top: 1.1rem;
-  left: 1.2rem;
+  top: 2.2rem;
+  left: 1.9rem;
   z-index: 8;
   background: rgba(30, 24, 15, 0.75);
   border: 1px solid rgba(212, 175, 55, 0.6);
@@ -1215,7 +1215,7 @@ const markers = ref([
   right: 0.6rem;
   bottom: 0.8rem;
   width: 8rem; /* 大约占比 */
-  z-index: 200;
+  z-index: 200000;
   display: flex;
   justify-content: flex-end;
   pointer-events: none;
