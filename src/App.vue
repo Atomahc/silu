@@ -67,6 +67,10 @@
                 </div>
               </div>
 
+              <!-- 数据面板 -->
+              <DataBox style="top: 1.1rem; left: 3rem;" />
+              <DataBoxIndustry style="top: 1.1rem; left: 7rem;" />
+
               <!-- 地标与功能区热点标注标签 -->
               <div 
                 v-for="marker in markers" 
@@ -149,6 +153,8 @@ import Panel1 from './components/Panel1.vue'
 import Panel2 from './components/Panel2.vue'
 import Panel3 from './components/Panel3.vue'
 import Panel4 from './components/Panel4.vue'
+import DataBox from './components/DataBox.vue'
+import DataBoxIndustry from './components/DataBoxIndustry.vue'
 
 
 
@@ -650,7 +656,7 @@ const markers = ref([
 .app-shell {
   width: 100%;
   height: 100%;
-  padding: 1.5rem 0.5rem;
+  padding:  0.5rem;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
@@ -993,15 +999,23 @@ const markers = ref([
 }
 
 /* 地标标注样式 - 使用 public 中的图片做为基底光柱和气泡框 */
+@keyframes floatUpDown {
+  0% { transform: translate(-50%, -100%); }
+  50% { transform: translate(-50%, -105%); }
+  100% { transform: translate(-50%, -100%); }
+}
+
 .map-marker {
   position: absolute;
   transform: translate(-50%, -100%);
   cursor: pointer;
   z-index: 4;
   transition: transform 0.3s ease;
+  animation: floatUpDown 2.5s ease-in-out infinite;
 }
 
 .map-marker:hover {
+  animation: none;
   transform: translate(-50%, -106%) scale(1.18);
   z-index: 15;
 }
@@ -1221,6 +1235,7 @@ const markers = ref([
   top: 0;
   left: 0;
   z-index: 1;
+  opacity: .8;
 }
 
 .popup-close {
