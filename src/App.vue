@@ -60,7 +60,7 @@
               <!-- 数据面板 -->
               <DataBox v-if="activeMarker && activeMarker.id === 4" style="top: 80%; left: 29.5%; transform: translate(-50%, calc(-100% - 1.5rem)); z-index: 100;" />
               <DataBoxIndustry v-if="activeMarker && activeMarker.id === 14" style="top: 89%; left: 77.0%; transform: translate(-50%, calc(-100% - 1.5rem)); z-index: 100;" />
-              <DataBoxGovernance v-if="activeMarker && activeMarker.id === 13" style="top: 67.5%; left: 90.0%; transform: translate(-80%, calc(-100% - 1.5rem)); z-index: 100;" />
+              <DataBoxGovernance style="top: 82%; left: 95.0%; transform: translate(-80%, calc(-100% - 1.5rem)); z-index: 100;" />
 
               <!-- 地标与功能区热点标注标签 -->
               <div 
@@ -86,7 +86,7 @@
         </div>
       </div>
               <!-- 弹窗展示选中地标/板块的详细信息 -->
-              <div v-if="activeMarker && activeMarker.id !== 4 && activeMarker.id !== 14 && activeMarker.id !== 13 && activeMarker.id !== 1" class="marker-modal-backdrop" @click.self="activeMarker = null">
+              <div v-if="activeMarker && activeMarker.htmlContent" class="marker-modal-backdrop" @click.self="activeMarker = null">
                 <div class="marker-modal" :class="{ 'html-modal': activeMarker.htmlContent }">
                   <button class="modal-close" @click="activeMarker = null">✕</button>
                   <h3>{{ activeMarker.title }}</h3>
@@ -294,7 +294,7 @@ const markers = ref([
   { id: 4, x: 32, y: 68.0, title: '公路口岸通关区', bgImg: './labb3.png', bottomImg: './labbb.png', width: '1.8rem', height: '.5rem', desc: '高效智能的现代公路物流通关区，集查验、通关、物流于一体，实现快速高效通关。', stats: [{ label: '日均通关车次', value: '2500+辆' }, { label: '平均通关时间', value: '15分钟' }] },
   { id: 5, x: 23.0, y: 64.5, title: '通行中欧班列 6000列', subTitle: '过货量 1000万吨', bgImg: './labb1.png', bottomImg: './labbb.png', width: '2.5rem', height: 'auto', desc: '亚欧陆路交通干线核心枢纽节点，累计开行中欧班列数万列，辐射欧亚多个国家。', stats: [{ label: '开行线路', value: '75条' }, { label: '通达国家', value: '18个' }], htmlContent: marker3Html },
   { id: 8, x: 44.8, y: 29.0, title: '经济开发区', bgImg: './labb3.png', bottomImg: './labbb.png', width: 'auto', height: '.5rem', desc: '国家级经济开发区，推动跨境产业与新兴工业全产业链高质量发展。', stats: [{ label: '开发区面积', value: '73k㎡' }, { label: '投产项目', value: '210个' }] },
-  { id: 22, x: 32.0, y: 55.0, title: '进出口货运量', subTitle: '2701.2万吨', bgImg: './labb1.png',  width: '2rem', height: '.8rem', desc: '进出口货运量统计。', stats: [{ label: '进出口货运量', value: '2701.2万吨' }] },
+  { id: 22, x: 30.0, y: 55.0, title: '进出口货运量', subTitle: '2701.2万吨', bgImg: './labb1.png',  width: '2rem', height: '.8rem', desc: '进出口货运量统计。', stats: [{ label: '进出口货运量', value: '2701.2万吨' }] },
   { id: 9, x: 52.5, y: 58.5, title: '自贸区', bgImg: './labg2.png', bottomImg: './labgb.png', width: 'auto', height: '.5rem', desc: '中国（新疆）自由贸易试验区霍尔果斯片区。', stats: [{ label: '企业注册', value: '1200+' }, { label: '政策扶持', value: '全方位' }], htmlContent: marker6Html },
   { id: 11, x: 65.5, y: 42.5, title: '中哈合作中心', bgImg: './labg3.png', bottomImg: './labgb.png', width: '1.6rem', height: '.5rem', desc: '全球首个跨国边境自由贸易合作区，实现中哈两国人员、车辆与货物的自由流动。', stats: [{ label: '免税额度', value: '8000元/人' }, { label: '日均客流', value: '2.5万人' }], htmlContent: marker10Html },
   { id: 12, x: 73.2, y: 24.0, title: '城市天际线', bgImg: './labg3.png', bottomImg: './labgb.png', width: 'auto', height: '.5rem', desc: '展现现代化口岸新城向现代化高科技城市迈进的雄伟城市轮廓。', stats: [{ label: '建筑地标', value: '12座' }, { label: '绿化覆盖率', value: '42%' }], htmlContent: marker12Html },
