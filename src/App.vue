@@ -72,7 +72,10 @@
               >
                 <div class="marker-img-container" :style="{ width: marker.width || 'auto', height: marker.height || 'auto' }">
                   <img :src="marker.bgImg" class="marker-bg-img" alt="" />
-                  <span class="marker-overlay-title">{{ marker.title }}</span>
+                  <div class="marker-overlay-title">
+                    <div class="title-text">{{ marker.title }}</div>
+                    <div v-if="marker.subTitle" class="marker-overlay-subtitle">{{ marker.subTitle }}</div>
+                  </div>
                   <img v-if="marker.bottomImg" :src="marker.bottomImg" class="marker-bottom-img" alt="" />
                   <div v-if="marker.tag" class="marker-custom-tag">{{ marker.tag }}</div>
                 </div>
@@ -287,16 +290,23 @@ onUnmounted(() => {
 // 地标数据定义 - 100%使用 public/ 中的 Group 92@2x 包含光柱及图文贴图的精美背景图片 (坐标已校准: x - 1, y + 3)
 const markers = ref([
   { id: 1, x: 5.8, y: 50.5, title: '驿站溯源', bgImg: './laby1.png', bottomImg: './labyb.png', width: 'auto', height: '.5rem', desc: '古代丝绸之路重要的商埠与通关驿站，见证千年丝路文明与商业贸易繁荣。', stats: [{ label: '建驿历史', value: '1000+年' }, { label: '遗址面积', value: '15.6公顷' }], htmlContent: marker1Html },
-  { id: 2, x: 14.5, y: 45.0, title: '六代国门', bgImg: './laby1.png', bottomImg: './labyb.png', width: 'auto', height: '.5rem', desc: '霍尔果斯历经六代国门的建设与演变，展现了中国边境口岸的沧桑巨变与辉煌发展。', stats: [{ label: '演进历程', value: '6代迭代' }, { label: '通关能力', value: '提升100倍' }], htmlContent: marker2Html },
-  { id: 4, x: 29.5, y: 68.0, title: '公路口岸通关区', bgImg: './labb3.png', bottomImg: './labbb.png', width: '1.8rem', height: '.5rem', desc: '高效智能的现代公路物流通关区，集查验、通关、物流于一体，实现快速高效通关。', stats: [{ label: '日均通关车次', value: '2500+辆' }, { label: '平均通关时间', value: '15分钟' }] },
-  { id: 5, x: 20.0, y: 64.5, title: '中欧班列', bgImg: './labb1.png', bottomImg: './labbb.png', width: 'auto', height: '.5rem', desc: '亚欧陆路交通干线核心枢纽节点，累计开行中欧班列数万列，辐射欧亚多个国家。', stats: [{ label: '开行线路', value: '75条' }, { label: '通达国家', value: '18个' }], htmlContent: marker3Html },
+  { id: 2, x: 15, y: 60.0, title: '六代国门', bgImg: './laby1.png', bottomImg: './labyb.png', width: 'auto', height: '.5rem', desc: '霍尔果斯历经六代国门的建设与演变，展现了中国边境口岸的沧桑巨变与辉煌发展。', stats: [{ label: '演进历程', value: '6代迭代' }, { label: '通关能力', value: '提升100倍' }], htmlContent: marker2Html },
+  { id: 4, x: 32, y: 68.0, title: '公路口岸通关区', bgImg: './labb3.png', bottomImg: './labbb.png', width: '1.8rem', height: '.5rem', desc: '高效智能的现代公路物流通关区，集查验、通关、物流于一体，实现快速高效通关。', stats: [{ label: '日均通关车次', value: '2500+辆' }, { label: '平均通关时间', value: '15分钟' }] },
+  { id: 5, x: 23.0, y: 64.5, title: '通行中欧班列 6000列', subTitle: '过货量 1000万吨', bgImg: './labb1.png', bottomImg: './labbb.png', width: '2.5rem', height: 'auto', desc: '亚欧陆路交通干线核心枢纽节点，累计开行中欧班列数万列，辐射欧亚多个国家。', stats: [{ label: '开行线路', value: '75条' }, { label: '通达国家', value: '18个' }], htmlContent: marker3Html },
   { id: 8, x: 44.8, y: 29.0, title: '经济开发区', bgImg: './labb3.png', bottomImg: './labbb.png', width: 'auto', height: '.5rem', desc: '国家级经济开发区，推动跨境产业与新兴工业全产业链高质量发展。', stats: [{ label: '开发区面积', value: '73k㎡' }, { label: '投产项目', value: '210个' }] },
+  { id: 22, x: 32.0, y: 55.0, title: '进出口货运量', subTitle: '2701.2万吨', bgImg: './labb1.png',  width: '2rem', height: '.8rem', desc: '进出口货运量统计。', stats: [{ label: '进出口货运量', value: '2701.2万吨' }] },
   { id: 9, x: 52.5, y: 58.5, title: '自贸区', bgImg: './labg2.png', bottomImg: './labgb.png', width: 'auto', height: '.5rem', desc: '中国（新疆）自由贸易试验区霍尔果斯片区。', stats: [{ label: '企业注册', value: '1200+' }, { label: '政策扶持', value: '全方位' }], htmlContent: marker6Html },
   { id: 11, x: 65.5, y: 42.5, title: '中哈合作中心', bgImg: './labg3.png', bottomImg: './labgb.png', width: '1.6rem', height: '.5rem', desc: '全球首个跨国边境自由贸易合作区，实现中哈两国人员、车辆与货物的自由流动。', stats: [{ label: '免税额度', value: '8000元/人' }, { label: '日均客流', value: '2.5万人' }], htmlContent: marker10Html },
   { id: 12, x: 73.2, y: 24.0, title: '城市天际线', bgImg: './labg3.png', bottomImg: './labgb.png', width: 'auto', height: '.5rem', desc: '展现现代化口岸新城向现代化高科技城市迈进的雄伟城市轮廓。', stats: [{ label: '建筑地标', value: '12座' }, { label: '绿化覆盖率', value: '42%' }], htmlContent: marker12Html },
   { id: 13, x: 90.0, y: 67.5, title: '智慧治理指挥中心', bgImg: './labp1.png', bottomImg: './labpb.png', width: '2rem', height: '.5rem', desc: '依托大屏监控与全域感知系统，实现口岸人流、物流、车流及城市的精细化全天候运营管理。', stats: [{ label: '全域感知设备', value: '12000+' }, { label: '事件处置率', value: '99.8%' }], htmlContent: marker13Html },
-  { id: 14, x: 77.0, y: 89.0, title: '产业园区', bgImg: './labg3.png', bottomImg: './labgb.png', width: 'auto', height: '.5rem', desc: '涵盖先进制造、农产品深加工、高端装备制造的跨境优势产业集群。', stats: [{ label: '产值规模', value: '180亿元' }, { label: '科技企业', value: '68家' }] },
-  { id: 15, x: 95.5, y: 82.0, title: '未来规划蓝图', bgImg: './labp2.png', bottomImg: './labpb.png', width: '1.6rem', height: '.5rem', desc: '立足亚欧黄金通道，规划打造全球顶级的绿色、智能、人文、包容的国际一流智慧口岸。', stats: [{ label: '规划面积', value: '120k㎡' }, { label: '远期贸易额', value: '1000亿' }], htmlContent: marker14Html }
+  { id: 14, x: 77.0, y: 80.0, title: '产业园区', bgImg: './labg3.png', bottomImg: './labgb.png', width: 'auto', height: '.5rem', desc: '涵盖先进制造、农产品深加工、高端装备制造的跨境优势产业集群。', stats: [{ label: '产值规模', value: '180亿元' }, { label: '科技企业', value: '68家' }] },
+  { id: 15, x: 95.5, y: 82.0, title: '未来规划蓝图', bgImg: './labp2.png', bottomImg: './labpb.png', width: '1.6rem', height: '.5rem', desc: '立足亚欧黄金通道，规划打造全球顶级的绿色、智能、人文、包容的国际一流智慧口岸。', stats: [{ label: '规划面积', value: '120k㎡' }, { label: '远期贸易额', value: '1000亿' }], htmlContent: marker14Html },
+  { id: 16, x: 22.0, y: 40, title: '实有人口7.1万', bgImg: './laby1.png', width: '1.8rem', height: '.5rem', desc: '霍尔果斯市辖区常住及流动实有人口统计。', stats: [{ label: '实有人口', value: '7.1万' }] },
+  { id: 17, x: 32.0, y: 38.0, title: '1-7月综保区', subTitle: '进出口总值48.6亿元', bgImg: './labb2.png', width: '2rem', height: '.9rem', desc: '综保区进出口总值显著增长。', stats: [{ label: '进出口总值', value: '48.6亿元' }] },
+  { id: 18, x: 45.0, y: 60.0, title: '外贸进出口', subTitle: '(申报数)689.44亿元', bgImg: './labb2.png',  width: '2rem', height: '.9rem', desc: '霍尔果斯外贸进出口（申报数）稳步增长。', stats: [{ label: '申报金额', value: '689.44亿元' }] },
+  { id: 19, x: 60.0, y: 70.0, title: '落地项目18个', subTitle: '同比增长63.63%', bgImg: './labg2.png', width: '2rem', height: '.9rem', desc: '落地项目建设进展。', stats: [{ label: '落地项目', value: '18个' }, { label: '同比增长', value: '63.63%' }] },
+  { id: 20, x: 77.0, y: 70.0, title: '地区生产总值122亿元', bgImg: './labg3.png',  width: '2.4rem', height: '.5rem', desc: '地区生产总值。', stats: [{ label: '地区生产总值', value: '122亿元' }] },
+  { id: 21, x: 55.0, y: 40.0, title: '入出园人员', subTitle: '512万人次', bgImg: './labg3.png',  width: '1.6rem', height: '.9rem', desc: '入出园人员情况。', stats: [{ label: '入出园人员', value: '512万人次' }] },
 ])
 </script>
 
@@ -656,13 +666,30 @@ const markers = ref([
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  pointer-events: none;
+  font-size: 0.18rem; /* fallback */
+}
+
+.title-text {
   font-size: 0.18rem;
   font-weight: bold;
   color: #ffffff;
-  white-space: nowrap;
   letter-spacing: 0.02rem;
   text-shadow: 0 0.02rem 0.06rem rgba(0, 0, 0, 0.95), 0 0 0.08rem rgba(0, 0, 0, 0.85);
-  pointer-events: none;
+}
+
+.marker-overlay-subtitle {
+  font-size: 0.15rem;
+  color: #ffcc00;
+  margin-top: 0.02rem;
+  font-weight: bold;
+  letter-spacing: 0.02rem;
+  text-shadow: 0 0.02rem 0.06rem rgba(0, 0, 0, 0.95), 0 0 0.08rem rgba(0, 0, 0, 0.85);
 }
 
 .marker-custom-tag {
