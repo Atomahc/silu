@@ -286,17 +286,17 @@ onUnmounted(() => {
 
 // 地标数据定义 - 100%使用 public/ 中的 Group 92@2x 包含光柱及图文贴图的精美背景图片 (坐标已校准: x - 1, y + 3)
 const markers = ref([
-  { id: 1, x: 5.8, y: 50.5, title: '驿站溯源', bgImg: './laby1.png', bottomImg: './labyb.png', width: 'auto', height: '.4rem', desc: '古代丝绸之路重要的商埠与通关驿站，见证千年丝路文明与商业贸易繁荣。', stats: [{ label: '建驿历史', value: '1000+年' }, { label: '遗址面积', value: '15.6公顷' }], htmlContent: marker1Html },
-  { id: 2, x: 14.5, y: 45.0, title: '六代国门', bgImg: './laby1.png', bottomImg: './labyb.png', width: 'auto', height: '.4rem', desc: '霍尔果斯历经六代国门的建设与演变，展现了中国边境口岸的沧桑巨变与辉煌发展。', stats: [{ label: '演进历程', value: '6代迭代' }, { label: '通关能力', value: '提升100倍' }], htmlContent: marker2Html },
-  { id: 4, x: 29.5, y: 68.0, title: '公路口岸通关区', bgImg: './labb3.png', bottomImg: './labbb.png', width: '1.8rem', height: '.4rem', desc: '高效智能的现代公路物流通关区，集查验、通关、物流于一体，实现快速高效通关。', stats: [{ label: '日均通关车次', value: '2500+辆' }, { label: '平均通关时间', value: '15分钟' }] },
-  { id: 5, x: 20.0, y: 64.5, title: '中欧班列', bgImg: './labb1.png', bottomImg: './labbb.png', width: 'auto', height: '.4rem', desc: '亚欧陆路交通干线核心枢纽节点，累计开行中欧班列数万列，辐射欧亚多个国家。', stats: [{ label: '开行线路', value: '75条' }, { label: '通达国家', value: '18个' }], htmlContent: marker3Html },
-  { id: 8, x: 44.8, y: 29.0, title: '经济开发区', bgImg: './labb3.png', bottomImg: './labbb.png', width: 'auto', height: '.4rem', desc: '国家级经济开发区，推动跨境产业与新兴工业全产业链高质量发展。', stats: [{ label: '开发区面积', value: '73k㎡' }, { label: '投产项目', value: '210个' }] },
-  { id: 9, x: 52.5, y: 58.5, title: '自贸区', bgImg: './labg2.png', bottomImg: './labgb.png', width: 'auto', height: '.4rem', desc: '中国（新疆）自由贸易试验区霍尔果斯片区。', stats: [{ label: '企业注册', value: '1200+' }, { label: '政策扶持', value: '全方位' }], htmlContent: marker6Html },
-  { id: 11, x: 65.5, y: 42.5, title: '中哈合作中心', bgImg: './labg3.png', bottomImg: './labgb.png', width: '1.6rem', height: '.4rem', desc: '全球首个跨国边境自由贸易合作区，实现中哈两国人员、车辆与货物的自由流动。', stats: [{ label: '免税额度', value: '8000元/人' }, { label: '日均客流', value: '2.5万人' }], htmlContent: marker10Html },
-  { id: 12, x: 73.2, y: 24.0, title: '城市天际线', bgImg: './labg3.png', bottomImg: './labgb.png', width: 'auto', height: '.4rem', desc: '展现现代化口岸新城向现代化高科技城市迈进的雄伟城市轮廓。', stats: [{ label: '建筑地标', value: '12座' }, { label: '绿化覆盖率', value: '42%' }], htmlContent: marker12Html },
-  { id: 13, x: 90.0, y: 67.5, title: '智慧治理指挥中心', bgImg: './labp1.png', bottomImg: './labpb.png', width: '1.8rem', height: '.4rem', desc: '依托大屏监控与全域感知系统，实现口岸人流、物流、车流及城市的精细化全天候运营管理。', stats: [{ label: '全域感知设备', value: '12000+' }, { label: '事件处置率', value: '99.8%' }], htmlContent: marker13Html },
-  { id: 14, x: 77.0, y: 89.0, title: '产业园区', bgImg: './labg3.png', bottomImg: './labgb.png', width: 'auto', height: '.4rem', desc: '涵盖先进制造、农产品深加工、高端装备制造的跨境优势产业集群。', stats: [{ label: '产值规模', value: '180亿元' }, { label: '科技企业', value: '68家' }] },
-  { id: 15, x: 95.5, y: 82.0, title: '未来规划蓝图', bgImg: './labp2.png', bottomImg: './labpb.png', width: '1.6rem', height: '.4rem', desc: '立足亚欧黄金通道，规划打造全球顶级的绿色、智能、人文、包容的国际一流智慧口岸。', stats: [{ label: '规划面积', value: '120k㎡' }, { label: '远期贸易额', value: '1000亿' }], htmlContent: marker14Html }
+  { id: 1, x: 5.8, y: 50.5, title: '驿站溯源', bgImg: './laby1.png', bottomImg: './labyb.png', width: 'auto', height: '.5rem', desc: '古代丝绸之路重要的商埠与通关驿站，见证千年丝路文明与商业贸易繁荣。', stats: [{ label: '建驿历史', value: '1000+年' }, { label: '遗址面积', value: '15.6公顷' }], htmlContent: marker1Html },
+  { id: 2, x: 14.5, y: 45.0, title: '六代国门', bgImg: './laby1.png', bottomImg: './labyb.png', width: 'auto', height: '.5rem', desc: '霍尔果斯历经六代国门的建设与演变，展现了中国边境口岸的沧桑巨变与辉煌发展。', stats: [{ label: '演进历程', value: '6代迭代' }, { label: '通关能力', value: '提升100倍' }], htmlContent: marker2Html },
+  { id: 4, x: 29.5, y: 68.0, title: '公路口岸通关区', bgImg: './labb3.png', bottomImg: './labbb.png', width: '1.8rem', height: '.5rem', desc: '高效智能的现代公路物流通关区，集查验、通关、物流于一体，实现快速高效通关。', stats: [{ label: '日均通关车次', value: '2500+辆' }, { label: '平均通关时间', value: '15分钟' }] },
+  { id: 5, x: 20.0, y: 64.5, title: '中欧班列', bgImg: './labb1.png', bottomImg: './labbb.png', width: 'auto', height: '.5rem', desc: '亚欧陆路交通干线核心枢纽节点，累计开行中欧班列数万列，辐射欧亚多个国家。', stats: [{ label: '开行线路', value: '75条' }, { label: '通达国家', value: '18个' }], htmlContent: marker3Html },
+  { id: 8, x: 44.8, y: 29.0, title: '经济开发区', bgImg: './labb3.png', bottomImg: './labbb.png', width: 'auto', height: '.5rem', desc: '国家级经济开发区，推动跨境产业与新兴工业全产业链高质量发展。', stats: [{ label: '开发区面积', value: '73k㎡' }, { label: '投产项目', value: '210个' }] },
+  { id: 9, x: 52.5, y: 58.5, title: '自贸区', bgImg: './labg2.png', bottomImg: './labgb.png', width: 'auto', height: '.5rem', desc: '中国（新疆）自由贸易试验区霍尔果斯片区。', stats: [{ label: '企业注册', value: '1200+' }, { label: '政策扶持', value: '全方位' }], htmlContent: marker6Html },
+  { id: 11, x: 65.5, y: 42.5, title: '中哈合作中心', bgImg: './labg3.png', bottomImg: './labgb.png', width: '1.6rem', height: '.5rem', desc: '全球首个跨国边境自由贸易合作区，实现中哈两国人员、车辆与货物的自由流动。', stats: [{ label: '免税额度', value: '8000元/人' }, { label: '日均客流', value: '2.5万人' }], htmlContent: marker10Html },
+  { id: 12, x: 73.2, y: 24.0, title: '城市天际线', bgImg: './labg3.png', bottomImg: './labgb.png', width: 'auto', height: '.5rem', desc: '展现现代化口岸新城向现代化高科技城市迈进的雄伟城市轮廓。', stats: [{ label: '建筑地标', value: '12座' }, { label: '绿化覆盖率', value: '42%' }], htmlContent: marker12Html },
+  { id: 13, x: 90.0, y: 67.5, title: '智慧治理指挥中心', bgImg: './labp1.png', bottomImg: './labpb.png', width: '2rem', height: '.5rem', desc: '依托大屏监控与全域感知系统，实现口岸人流、物流、车流及城市的精细化全天候运营管理。', stats: [{ label: '全域感知设备', value: '12000+' }, { label: '事件处置率', value: '99.8%' }], htmlContent: marker13Html },
+  { id: 14, x: 77.0, y: 89.0, title: '产业园区', bgImg: './labg3.png', bottomImg: './labgb.png', width: 'auto', height: '.5rem', desc: '涵盖先进制造、农产品深加工、高端装备制造的跨境优势产业集群。', stats: [{ label: '产值规模', value: '180亿元' }, { label: '科技企业', value: '68家' }] },
+  { id: 15, x: 95.5, y: 82.0, title: '未来规划蓝图', bgImg: './labp2.png', bottomImg: './labpb.png', width: '1.6rem', height: '.5rem', desc: '立足亚欧黄金通道，规划打造全球顶级的绿色、智能、人文、包容的国际一流智慧口岸。', stats: [{ label: '规划面积', value: '120k㎡' }, { label: '远期贸易额', value: '1000亿' }], htmlContent: marker14Html }
 ])
 </script>
 
@@ -845,7 +845,7 @@ const markers = ref([
   top: 0.8rem;
   right: 0.6rem;
   bottom: 0.8rem;
-  width: 9rem; /* 大约占比 */
+  width: 50%; /* 大约占比 */
   z-index: 200000;
   display: flex;
   justify-content: flex-end;
