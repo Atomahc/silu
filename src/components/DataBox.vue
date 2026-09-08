@@ -6,8 +6,8 @@
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V12L16 14" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="text-content">
-          <div class="label">重车放行数量</div>
-          <div class="value">38928 <span class="unit">辆</span></div>
+          <div class="label">今日整车放行</div>
+          <div class="value">811 <span class="unit">辆</span></div>
         </div>
       </div>
       <div class="data-item">
@@ -15,8 +15,8 @@
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V12L16 14" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="text-content">
-          <div class="label">重车预约数量</div>
-          <div class="value">2273 <span class="unit">辆</span></div>
+          <div class="label">今日整车预约</div>
+          <div class="value">663 <span class="unit">辆</span></div>
         </div>
       </div>
       <div class="data-item">
@@ -24,8 +24,8 @@
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#eab308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V12L16 14" stroke="#eab308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="text-content">
-          <div class="label">商品车放行数量</div>
-          <div class="value">22731 <span class="unit">辆</span></div>
+          <div class="label">今日重车放行</div>
+          <div class="value">411 <span class="unit">辆</span></div>
         </div>
       </div>
       <div class="data-item">
@@ -33,8 +33,8 @@
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#eab308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V12L16 14" stroke="#eab308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="text-content">
-          <div class="label">商品车预约数量</div>
-          <div class="value">3827 <span class="unit">辆</span></div>
+          <div class="label">今日重车预约</div>
+          <div class="value">279 <span class="unit">辆</span></div>
         </div>
       </div>
     </div>

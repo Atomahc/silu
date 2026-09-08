@@ -1,32 +1,39 @@
+<script setup>
+import { ref } from 'vue'
+const isExpanded = ref(false)
+const toggleExpand = () => {
+  isExpanded.value = !isExpanded.value
+}
+</script>
+
 <template>
   <div class="data-box-container">
     <div class="data-grid">
       <div class="data-item">
-        <div class="icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V12L16 14" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
         <div class="text-content">
           <div class="label">新签投资项目</div>
           <div class="value">24 <span class="unit">个</span></div>
         </div>
       </div>
-      <div class="data-item">
-        <div class="icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V12L16 14" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      
+      <template v-if="isExpanded">
+        <div class="data-item">
+          <div class="text-content">
+            <div class="label">同比增长</div>
+            <div class="value">71.42 <span class="unit">%</span></div>
+          </div>
         </div>
-        <div class="text-content">
-          <div class="label">同比增长</div>
-          <div class="value">71.42 <span class="unit">%</span></div>
+        <div class="data-item">
+          <div class="text-content">
+            <div class="label">协议总投资</div>
+            <div class="value">46.2 <span class="unit">亿元</span></div>
+          </div>
         </div>
-      </div>
-      <div class="data-item">
-        <div class="icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#eab308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V12L16 14" stroke="#eab308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="text-content">
-          <div class="label">协议总投资</div>
-          <div class="value">46.2 <span class="unit">亿元</span></div>
-        </div>
+      </template>
+
+      <div class="toggle-btn" @click="toggleExpand">
+        <svg v-if="!isExpanded" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
       </div>
     </div>
   </div>
@@ -87,10 +94,17 @@
   display: block;
 }
 
+.text-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .label {
   color: #e0c896;
   font-size: 0.15rem;
-  margin-bottom: 4px;
+  margin-right: 0.1rem;
 }
 
 .value {
@@ -104,5 +118,25 @@
   font-size: 0.15rem;
   color: #94a3b8;
   font-weight: normal;
+}
+
+.toggle-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.04rem 0;
+  color: #e0c896;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.toggle-btn:hover {
+  opacity: 1;
+}
+
+.toggle-btn svg {
+  width: 0.2rem;
+  height: 0.2rem;
 }
 </style>
