@@ -48,7 +48,7 @@
           <div class="scroll-content" ref="scrollContainer" 
                @mousedown="startDrag" 
                
-               :class="{ 'is-dragging': isDragging }">
+               :class="{ 'is-dragging': isDragging, 'is-fullscreen': isFullScreen }">
             <!-- 中间全景展示大图与交互热点区域 -->
             <div class="panoramic-container">
               <!-- 背景画卷 -->
@@ -133,11 +133,28 @@
       </footer>
 
     </div>
+    <!-- 全屏切换按钮 -->
+    <div class="fullscreen-toggle">
+      <button @click="isFullScreen = !isFullScreen">{{ isFullScreen ? '切换为滚动模式' : '全屏模式展示' }}</button>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
+
+const isFullScreen = ref(false)
+
+watch(isFullScreen, (val) => {
+  if (val) {
+    document.documentElement.classList.add('is-fullscreen-mode')
+  } else {
+    document.documentElement.classList.remove('is-fullscreen-mode')
+  }
+  if (typeof window.updateRem === 'function') {
+    window.updateRem()
+  }
+})
 
 import Panel0 from './components/Panel0.vue'
 import Panel1 from './components/Panel1.vue'
@@ -1015,6 +1032,52 @@ const markers = ref([
 }
 .custom-timeline .timeline-desc strong {
   color: #a00;
+}
+
+/* 全屏切换按钮 */
+.fullscreen-toggle {
+  position: absolute;
+  bottom: 0.15rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999999;
+}
+.fullscreen-toggle button {
+  background: rgba(0, 0, 0, 0.65);
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  padding: 0.06rem 0.2rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  font-size: 0.14rem;
+  font-weight: bold;
+  letter-spacing: 0.02rem;
+  outline: none;
+  transition: all 0.3s;
+  box-shadow: 0 0.04rem 0.12rem rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+}
+.fullscreen-toggle button:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: #d4af37;
+  box-shadow: 0 0.04rem 0.16rem rgba(212, 175, 55, 0.4);
+}
+
+/* 全屏模式下的展示画布 */
+.scroll-content.is-fullscreen {
+  overflow-x: hidden !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scroll-content.is-fullscreen .panoramic-container {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+.scroll-content.is-fullscreen .panoramic-bg {
+  width: 100% !important;
+  height: auto !important;
 }
 </style>
 

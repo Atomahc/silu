@@ -8,14 +8,16 @@
     <script>
       function setRem() {
         const docEl = document.documentElement;
-        // 使用屏幕宽度来计算rem，以保证所有元素与视口宽度(vw)及自适应画卷保持绝对的同比例缩放
-        // 假设原设计稿比例接近16:9，用 clientWidth / 16 替代 clientHeight / 9
         const clientWidth = docEl.clientWidth;
-        const rem = clientWidth / 16;
+        let rem = clientWidth / 16;
+        if (docEl.classList.contains('is-fullscreen-mode')) {
+          rem = rem / 2;
+        }
         docEl.style.fontSize = rem + 'px';
       }
       setRem();
       window.addEventListener('resize', setRem);
+      window.updateRem = setRem;
     </script>
   </head>
   <body>
