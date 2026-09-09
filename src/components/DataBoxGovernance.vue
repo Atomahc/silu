@@ -68,12 +68,12 @@
 
 <style scoped>
 .governance-box {
-  background: rgba(30, 24, 15, 0.75);
-  border: 1px solid rgba(212, 175, 55, 0.6);
+  background: rgba(20, 15, 30, 0.75);
+  border: 1px solid rgba(60, 55, 212, 0.6);
   border-radius: 0.08rem;
   padding: 0.16rem;
   width: 7rem;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(1px);
   position: absolute;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -100,7 +100,7 @@
 .gov-item {
   background: rgba(212, 175, 55, 0.05);
   border-radius: 0.08rem;
-  padding: 0.12rem;
+  padding: 0.1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
