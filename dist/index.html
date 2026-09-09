@@ -8,15 +8,17 @@
     <script>
       function setRem() {
         const docEl = document.documentElement;
-        const clientHeight = docEl.clientHeight;
-        const rem = clientHeight / 9;
+        // 使用屏幕宽度来计算rem，以保证所有元素与视口宽度(vw)及自适应画卷保持绝对的同比例缩放
+        // 假设原设计稿比例接近16:9，用 clientWidth / 16 替代 clientHeight / 9
+        const clientWidth = docEl.clientWidth;
+        const rem = clientWidth / 16;
         docEl.style.fontSize = rem + 'px';
       }
       setRem();
       window.addEventListener('resize', setRem);
     </script>
-    <script type="module" crossorigin src="./index-Dx6iwUQ3.js"></script>
-    <link rel="stylesheet" crossorigin href="./index-BwZyVDnW.css">
+    <script type="module" crossorigin src="./index-BSHNV7bY.js"></script>
+    <link rel="stylesheet" crossorigin href="./index-CQbsp9zG.css">
   </head>
   <body>
     <div id="app"></div>

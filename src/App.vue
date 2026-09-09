@@ -773,13 +773,14 @@ const markers = ref([
   line-height: 1.6;
 }
 
-.modal-html-content p {
+:deep(.modal-html-content p) {
   margin-bottom: 0.1rem;
 }
 
-.modal-html-content img {
-  max-width: 100%;
+:deep(.modal-html-content img) {
+  width: 100%;
   height: auto;
+  margin: 10px auto;
 }
 
 .modal-stats {
