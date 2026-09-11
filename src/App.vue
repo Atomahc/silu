@@ -328,7 +328,7 @@ const markers = ref([
 .app-shell {
   width: 100%;
   height: 100%;
-  padding:  0.5rem;
+  padding: 0rem 0.5rem;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
