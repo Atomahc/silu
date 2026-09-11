@@ -7,9 +7,9 @@
         <div class="header-left">
           <div class="time-update">
             <div class="icon-refresh">
-                <img src="/Frame@2x.png" alt="">
+                <!-- <img src="/Frame@2x.png" alt=""> -->
             </div>
-            <div class="update-time">更新时间：{{ lastUpdated }}</div>
+            <div class="update-time"></div>
           </div>
         </div>
         <div class="header-center">
