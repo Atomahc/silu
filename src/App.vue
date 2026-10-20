@@ -1,6 +1,6 @@
 <template>
   <div class="app-shell">
-    <div class="scroll-container" :class="{ 'is-night': isNight }">
+    <div class="scroll-container" :class="{ 'is-night': isNight, 'is-opening': isOpening, 'is-opened': isOpened }">
       
       <!-- 头部 Header (固定在 scroll-container) -->
       <header class="header" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }">
@@ -31,52 +31,55 @@
         </div>
       </header>
 
-      <!-- 卷轴轴柄 - 左边 (绝对定位在 scroll-container 的边缘) -->
-      <div class="scroll-handle handle-left" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }" @mouseenter="startScroll('left')" @mouseleave="stopScroll">
-        <img src="/Group 2@2x.png" alt="">
-      </div>
+      <!-- 卷轴旋转与展开主体 -->
+      <div class="scroll-body" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }">
+        <!-- 卷轴轴柄 - 左边 (绝对定位在 scroll-body 的边缘) -->
+        <div class="scroll-handle handle-left" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }" @mouseenter="startScroll('left')" @mouseleave="stopScroll">
+          <img src="/Group 2@2x.png" alt="">
+        </div>
 
-      <!-- 卷轴轴柄 - 右边 (绝对定位在 scroll-container 的边缘) -->
-      <div class="scroll-handle handle-right" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }" @mouseenter="startScroll('right')" @mouseleave="stopScroll">
-        <img src="/Group 3@2x.png" alt="">
-      </div>
+        <!-- 卷轴轴柄 - 右边 (绝对定位在 scroll-body 的边缘) -->
+        <div class="scroll-handle handle-right" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }" @mouseenter="startScroll('right')" @mouseleave="stopScroll">
+          <img src="/Group 3@2x.png" alt="">
+        </div>
 
-      <!-- Ratio Box (100% width) -->
-      <div class="ratio-box" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }">
-        <div class="scroll-wrapper">
-          <!-- 这里使用 ref 处理真正的横向滚动 -->
-          <div class="scroll-content" ref="scrollContainer" 
-               @mousedown="startDrag" 
-               
-               :class="{ 'is-dragging': isDragging, 'is-fullscreen': isFullScreen }">
-            <!-- 中间全景展示大图与交互热点区域 -->
-            <div class="panoramic-container">
-              <!-- 背景画卷 -->
-              <img src="/Group 1@2x.png" alt="霍尔果斯口岸全景图" class="panoramic-bg" />
-              <!-- 数据面板 -->
-              <DataBox v-if="activeMarker && activeMarker.id === 4" style="top: 80%; left: 29.5%; transform: translate(-50%, calc(-100% - 1.5rem)); z-index: 100;" />
-              <DataBoxIndustry v-if="activeMarker && activeMarker.id === 14" style="top: 89%; left: 77.0%; transform: translate(-50%, calc(-100% - 1.5rem)); z-index: 100;" />
-              <DataBoxGovernance v-if="activeMarker && activeMarker.id === 13" style="top: 85%; left: 95.0%; transform: translate(-80%, calc(-100% - 1.5rem)); z-index: 100;" />
+        <!-- Ratio Box (100% width) -->
+        <div class="ratio-box" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }">
+          <div class="scroll-wrapper">
+            <!-- 这里使用 ref 处理真正的横向滚动 -->
+            <div class="scroll-content" ref="scrollContainer" 
+                 @mousedown="startDrag" 
+                 
+                 :class="{ 'is-dragging': isDragging, 'is-fullscreen': isFullScreen }">
+              <!-- 中间全景展示大图与交互热点区域 -->
+              <div class="panoramic-container">
+                <!-- 背景画卷 -->
+                <img src="/Group 1@2x.png" alt="霍尔果斯口岸全景图" class="panoramic-bg" />
+                <!-- 数据面板 -->
+                <DataBox v-if="activeMarker && activeMarker.id === 4" style="top: 80%; left: 29.5%; transform: translate(-50%, calc(-100% - 1.5rem)); z-index: 100;" />
+                <DataBoxIndustry v-if="activeMarker && activeMarker.id === 14" style="top: 89%; left: 77.0%; transform: translate(-50%, calc(-100% - 1.5rem)); z-index: 100;" />
+                <DataBoxGovernance v-if="activeMarker && activeMarker.id === 13" style="top: 85%; left: 95.0%; transform: translate(-80%, calc(-100% - 1.5rem)); z-index: 100;" />
 
-              <!-- 地标与功能区热点标注标签 -->
-              <div 
-                v-for="marker in markers" 
-                :key="marker.id"
-                class="map-marker"
-                :style="{ left: marker.x + '%', top: marker.y + '%' }"
-                @click="activeMarker = activeMarker && activeMarker.id === marker.id ? null : marker"
-              >
-                <div class="marker-img-container" :style="{ width: marker.width || 'auto', height: marker.height || 'auto' }">
-                  <img :src="marker.bgImg" class="marker-bg-img" alt="" />
-                  <div class="marker-overlay-title">
-                    <div class="title-text">{{ marker.title }}</div>
-                    <div v-if="marker.subTitle" class="marker-overlay-subtitle">{{ marker.subTitle }}</div>
+                <!-- 地标与功能区热点标注标签 -->
+                <div 
+                  v-for="marker in markers" 
+                  :key="marker.id"
+                  class="map-marker"
+                  :style="{ left: marker.x + '%', top: marker.y + '%' }"
+                  @click="activeMarker = activeMarker && activeMarker.id === marker.id ? null : marker"
+                >
+                  <div class="marker-img-container" :style="{ width: marker.width || 'auto', height: marker.height || 'auto' }">
+                    <img :src="marker.bgImg" class="marker-bg-img" alt="" />
+                    <div class="marker-overlay-title">
+                      <div class="title-text">{{ marker.title }}</div>
+                      <div v-if="marker.subTitle" class="marker-overlay-subtitle">{{ marker.subTitle }}</div>
+                    </div>
+                    <img v-if="marker.bottomImg" :src="marker.bottomImg" class="marker-bottom-img" alt="" />
+                    <div v-if="marker.tag" class="marker-custom-tag">{{ marker.tag }}</div>
                   </div>
-                  <img v-if="marker.bottomImg" :src="marker.bottomImg" class="marker-bottom-img" alt="" />
-                  <div v-if="marker.tag" class="marker-custom-tag">{{ marker.tag }}</div>
                 </div>
-              </div>
 
+              </div>
             </div>
           </div>
         </div>
@@ -143,7 +146,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 
-const isFullScreen = ref(false)
+const isFullScreen = ref(true)
 
 watch(isFullScreen, (val) => {
   if (val) {
@@ -154,7 +157,7 @@ watch(isFullScreen, (val) => {
   if (typeof window.updateRem === 'function') {
     window.updateRem()
   }
-})
+}, { immediate: true })
 
 import Panel0 from './components/Panel0.vue'
 import Panel1 from './components/Panel1.vue'
@@ -208,16 +211,17 @@ const activeMarker = ref(null)
 // 卷轴动画状态
 const isOpening = ref(true)
 const isOpened = ref(false)
+let openAnimationTimer = null
 
 const currentNavIndex = ref("")
 const panels = [Panel0, Panel1, Panel2, Panel3, Panel4]
 const footerNavs = ref([
-  '数字党建',
-  '数字政务',
-  '数字经济',
-  '数字社会',
-  '数字文化',
-  '平安霍尔果斯'
+  '驿站溯源',
+  '口岸脉动',
+  '货通四海',
+  '产业新域',
+  '智慧未来'
+  
 ])
 
 // 拖拽滚动逻辑
@@ -265,12 +269,16 @@ const stopDrag = () => {
 }
 
 const triggerScrollAnimation = () => {
-  isOpening.value = true
+  if (openAnimationTimer) clearTimeout(openAnimationTimer)
+  isOpening.value = false
   isOpened.value = false
-  setTimeout(() => {
-    isOpening.value = false
-    isOpened.value = true
-  }, 3800)
+  requestAnimationFrame(() => {
+    isOpening.value = true
+    openAnimationTimer = setTimeout(() => {
+      isOpening.value = false
+      isOpened.value = true
+    }, 5000)
+  })
 }
 
 const replayScrollAnimation = () => {
@@ -298,6 +306,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (timer) clearInterval(timer)
+  if (openAnimationTimer) clearTimeout(openAnimationTimer)
 })
 
 // 地标数据定义 - 100%使用 public/ 中的 Group 92@2x 包含光柱及图文贴图的精美背景图片 (坐标已校准: x - 1, y + 3)
@@ -482,13 +491,43 @@ const markers = ref([
   filter: drop-shadow(4px 0 8px rgba(0, 0, 0, 0.4));
 }
 
-/* 卷轴展开动画控制：以 width 0% -> 100% 驱动物理伸展，轴柄绝对贴合跟随！ */
+/* 卷轴主体区域：作为旋转与展开的统一载体 */
+.scroll-body {
+  width: 100%;
+  height: auto;
+  position: relative;
+  transform-origin: center center;
+}
+
+/* 初始加载动画：在卷轴展开之前先旋转一圈 (360度) */
+.scroll-body.is-opening {
+  animation: scrollBodyRotate 1.2s cubic-bezier(0.34, 1.15, 0.64, 1) forwards;
+  will-change: transform;
+}
+
+@keyframes scrollBodyRotate {
+  0% {
+    transform: rotate(0deg) scale(0.96);
+  }
+  60% {
+    transform: rotate(230deg) scale(1.02);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.scroll-container.is-opening {
+  overflow: visible;
+}
+
+/* 卷轴展开动画控制：旋转1.2s结束后，通过 1.2s 延迟开始物理伸展展开，轴柄绝对贴合跟随！ */
 .ratio-box.is-opening .scroll-content {
-  animation: scrollPhysicalExpand 3.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  animation: scrollPhysicalExpand 3.6s cubic-bezier(0.25, 0.1, 0.25, 1) 1.2s both;
 }
 
 .ratio-box.is-opening .panoramic-container {
-  animation: scrollContentFadeIn 3.6s ease forwards;
+  animation: scrollContentFadeIn 3.6s ease 1.2s both;
 }
 
 .footer-nav-cell.active {
@@ -499,20 +538,20 @@ const markers = ref([
 }
 
 .scroll-footer.is-opening {
-  animation: headerFooterExpand 3.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  animation: headerFooterExpand 3.6s cubic-bezier(0.25, 0.1, 0.25, 1) 1.2s both;
 }
 .header.is-opening {
-  animation: headerFooterExpand 3.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  animation: headerFooterExpand 3.6s cubic-bezier(0.25, 0.1, 0.25, 1) 1.2s both;
 }
 
 /* 纯物理宽度展开关键帧 */
 
 .handle-left.is-opening {
-  animation: handleLeftExpand 3.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  animation: handleLeftExpand 3.6s cubic-bezier(0.25, 0.1, 0.25, 1) 1.2s both;
 }
 
 .handle-right.is-opening {
-  animation: handleRightExpand 3.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  animation: handleRightExpand 3.6s cubic-bezier(0.25, 0.1, 0.25, 1) 1.2s both;
 }
 
 @keyframes handleLeftExpand {
@@ -521,7 +560,7 @@ const markers = ref([
     transform: translateX(-50%);
   }
   100% {
-    left: 0.2rem;
+    left: .14rem;
     transform: translateX(-30%);
   }
 }
@@ -532,7 +571,7 @@ const markers = ref([
     transform: translateX(50%);
   }
   100% {
-    right: 0.2rem;
+    right: .14rem;
     transform: translateX(30%);
   }
 }
@@ -1071,12 +1110,12 @@ const markers = ref([
   justify-content: center;
 }
 .scroll-content.is-fullscreen .panoramic-container {
-  width: 100% !important;
+  width: calc(100vw - 1.6rem) !important;
   height: auto !important;
   display: block;
 }
 .scroll-content.is-fullscreen .panoramic-bg {
-  width: 100% !important;
+  width: calc(100vw - 1.6rem) !important;
   height: auto !important;
 }
 </style>
