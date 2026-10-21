@@ -1,15 +1,15 @@
 <template>
   <div class="app-shell">
-    <div class="scroll-container" :class="{ 'is-night': isNight, 'is-opening': isOpening, 'is-opened': isOpened }">
+    <div class="scroll-container" :class="{ 'is-night': isNight, 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing, 'is-closed': isClosed }">
       
       <!-- 头部 Header (固定在 scroll-container) -->
-      <header class="header" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }">
+      <header class="header" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing }">
         <div class="header-left">
-          <div class="time-update">
-            <div class="icon-refresh">
-                <!-- <img src="/Frame@2x.png" alt=""> -->
+          <div class="weather-info">
+            <div class="icon-weather">
+              <img src="/image 2@2x.png" alt="">
             </div>
-            <div class="update-time"></div>
+            <div>24~32°C</div>
           </div>
         </div>
         <div class="header-center">
@@ -22,34 +22,30 @@
             </div>
             <div>{{ currentTime }}</div>
           </div>
-          <div class="weather-info">
-            <div class="icon-weather">
-              <img src="/image 2@2x.png" alt="">
-            </div>
-            <div>24~32°C</div>
-          </div>
         </div>
       </header>
 
       <!-- 卷轴旋转与展开主体 -->
-      <div class="scroll-body" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }">
+      <div class="scroll-body" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing }">
         <!-- 卷轴轴柄 - 左边 (绝对定位在 scroll-body 的边缘) -->
-        <div class="scroll-handle handle-left" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }" @mouseenter="startScroll('left')" @mouseleave="stopScroll">
+        <div class="scroll-handle handle-left" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing, 'is-fullscreen': isFullScreen }" @mouseenter="startScroll('left')" @mouseleave="stopScroll">
           <img src="/Group 2@2x.png" alt="">
         </div>
 
         <!-- 卷轴轴柄 - 右边 (绝对定位在 scroll-body 的边缘) -->
-        <div class="scroll-handle handle-right" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }" @mouseenter="startScroll('right')" @mouseleave="stopScroll">
+        <div class="scroll-handle handle-right" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing, 'is-fullscreen': isFullScreen }" @mouseenter="startScroll('right')" @mouseleave="stopScroll">
           <img src="/Group 3@2x.png" alt="">
         </div>
 
         <!-- Ratio Box (100% width) -->
-        <div class="ratio-box" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }">
+        <div class="ratio-box" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing }">
           <div class="scroll-wrapper">
             <!-- 这里使用 ref 处理真正的横向滚动 -->
             <div class="scroll-content" ref="scrollContainer" 
                  @mousedown="startDrag" 
-                 
+                 @wheel.prevent="onWheel"
+                 @mouseenter="onScrollContentMouseEnter"
+                 @mouseleave="onScrollContentMouseLeave"
                  :class="{ 'is-dragging': isDragging, 'is-fullscreen': isFullScreen }">
               <!-- 中间全景展示大图与交互热点区域 -->
               <div class="panoramic-container">
@@ -120,7 +116,7 @@
       </transition>
 
       <!-- 底部 Footer (固定在 scroll-container) -->
-      <footer class="scroll-footer" :class="{ 'is-opening': isOpening, 'is-opened': isOpened }">
+      <footer class="scroll-footer" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing }">
         <div class="flexdvv">
                   <div 
           v-for="(nav, index) in footerNavs" 
@@ -137,8 +133,26 @@
 
     </div>
     <!-- 全屏切换按钮 -->
-    <div class="fullscreen-toggle">
-      <button @click="isFullScreen = !isFullScreen">{{ isFullScreen ? '切换为滚动模式' : '全屏模式展示' }}</button>
+    <div class="fullscreen-toggle" v-if="!isClosed" :class="{ 'is-closing': isClosing }">
+      <button @click="toggleFullScreen">{{ isFullScreen ? '切换为滚动模式' : '全屏模式展示' }}</button>
+    </div>
+
+    <!-- 页面右上角关闭与展开按钮 -->
+    <div class="page-close-btn" @click="handlePageCloseOrReopen" :title="isClosed || isClosing ? '展开画卷' : '收起并关闭画卷'">
+      <div class="close-btn-inner">
+        <template v-if="!isClosed && !isClosing">
+          <svg viewBox="0 0 24 24" class="close-icon" width="18" height="18">
+            <path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+          <span class="btn-text">关闭</span>
+        </template>
+        <template v-else>
+          <svg viewBox="0 0 24 24" class="close-icon" width="18" height="18">
+            <path fill="currentColor" d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
+          </svg>
+          <span class="btn-text">展开画卷</span>
+        </template>
+      </div>
     </div>
   </div>
 </template>
@@ -146,7 +160,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 
-const isFullScreen = ref(true)
+const isFullScreen = ref(false)
 
 watch(isFullScreen, (val) => {
   if (val) {
@@ -158,6 +172,29 @@ watch(isFullScreen, (val) => {
     window.updateRem()
   }
 }, { immediate: true })
+
+const toggleFullScreen = () => {
+  isFullScreen.value = !isFullScreen.value
+  if (!isFullScreen.value) {
+    if (scrollContainer.value) {
+      currentScrollX = scrollContainer.value.scrollLeft
+    }
+    if (typeof pauseAutoScrollTemporarily === 'function') {
+      pauseAutoScrollTemporarily(1000)
+    }
+  }
+  try {
+    if (isFullScreen.value) {
+      if (!document.fullscreenElement && document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(() => {})
+      }
+    } else {
+      if (document.fullscreenElement && document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {})
+      }
+    }
+  } catch (e) {}
+}
 
 import Panel0 from './components/Panel0.vue'
 import Panel1 from './components/Panel1.vue'
@@ -181,7 +218,118 @@ import marker14Html from './html/marker_14.html?raw'
 const scrollContainer = ref(null)
 let scrollAnimationFrame = null
 
+// 自动循环滚动逻辑
+let currentScrollX = 0
+let autoScrollFrame = null
+let autoScrollPauseTimer = null
+let lastAutoScrollTime = 0
+const isAutoScrollPaused = ref(false)
+const isMouseHovering = ref(false)
+const autoScrollSpeed = 40 // 滚动速率：40 像素/秒，从左到右平缓循环滚动
+
+const onScrollContentMouseEnter = () => {
+  isMouseHovering.value = true
+}
+
+const onScrollContentMouseLeave = () => {
+  isMouseHovering.value = false
+  if (scrollContainer.value) {
+    currentScrollX = scrollContainer.value.scrollLeft
+  }
+  lastAutoScrollTime = performance.now()
+}
+
+const pauseAutoScrollTemporarily = (delay = 3000) => {
+  isAutoScrollPaused.value = true
+  if (autoScrollPauseTimer) clearTimeout(autoScrollPauseTimer)
+  autoScrollPauseTimer = setTimeout(() => {
+    if (scrollContainer.value) {
+      currentScrollX = scrollContainer.value.scrollLeft
+    }
+    isAutoScrollPaused.value = false
+    lastAutoScrollTime = performance.now()
+  }, delay)
+}
+
+const stepAutoScroll = (timestamp) => {
+  if (!lastAutoScrollTime) lastAutoScrollTime = timestamp
+  const dt = Math.min((timestamp - lastAutoScrollTime) / 1000, 0.1) // 限制最大帧间隔
+  lastAutoScrollTime = timestamp
+
+  if (
+    scrollContainer.value &&
+    !isFullScreen.value &&
+    !isOpening.value &&
+    !isAutoScrollPaused.value &&
+    !isMouseHovering.value &&
+    !isDragging.value &&
+    !activeMarker.value &&
+    (currentNavIndex.value === "" || currentNavIndex.value === null)
+  ) {
+    const container = scrollContainer.value
+    const maxScroll = container.scrollWidth - container.clientWidth
+
+    if (maxScroll > 0) {
+      if (container.scrollLeft >= maxScroll - 2) {
+        // 到达右侧终点：停顿2.5秒供观众欣赏，然后平滑回卷到最左端开始下一轮循环
+        isAutoScrollPaused.value = true
+        if (autoScrollPauseTimer) clearTimeout(autoScrollPauseTimer)
+        autoScrollPauseTimer = setTimeout(() => {
+          if (container) {
+            container.scrollTo({ left: 0, behavior: 'smooth' })
+            autoScrollPauseTimer = setTimeout(() => {
+              currentScrollX = 0
+              if (container) container.scrollLeft = 0
+              isAutoScrollPaused.value = false
+              lastAutoScrollTime = performance.now()
+            }, 1800)
+          } else {
+            isAutoScrollPaused.value = false
+            lastAutoScrollTime = performance.now()
+          }
+        }, 2500)
+      } else {
+        const step = autoScrollSpeed * dt
+        currentScrollX += step
+        if (Math.abs(container.scrollLeft - currentScrollX) > 10) {
+          currentScrollX = container.scrollLeft + step
+        }
+        container.scrollLeft = currentScrollX
+      }
+    }
+  }
+
+  autoScrollFrame = requestAnimationFrame(stepAutoScroll)
+}
+
+const startAutoScroll = () => {
+  if (autoScrollFrame) cancelAnimationFrame(autoScrollFrame)
+  lastAutoScrollTime = performance.now()
+  autoScrollFrame = requestAnimationFrame(stepAutoScroll)
+}
+
+const stopAutoScroll = () => {
+  if (autoScrollFrame) {
+    cancelAnimationFrame(autoScrollFrame)
+    autoScrollFrame = null
+  }
+  if (autoScrollPauseTimer) {
+    clearTimeout(autoScrollPauseTimer)
+    autoScrollPauseTimer = null
+  }
+}
+
+const onWheel = (e) => {
+  if (isFullScreen.value || !scrollContainer.value) return
+  const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY
+  scrollContainer.value.scrollLeft += delta
+  currentScrollX = scrollContainer.value.scrollLeft
+  pauseAutoScrollTemporarily(3000)
+}
+
 const startScroll = (direction) => {
+  if (isFullScreen.value) return;
+  pauseAutoScrollTemporarily(3000);
   const speed = 15; // 滚动速度
   const scrollStep = () => {
     if (scrollContainer.value) {
@@ -190,6 +338,7 @@ const startScroll = (direction) => {
       } else {
         scrollContainer.value.scrollLeft += speed;
       }
+      currentScrollX = scrollContainer.value.scrollLeft;
     }
     scrollAnimationFrame = requestAnimationFrame(scrollStep);
   }
@@ -201,6 +350,7 @@ const stopScroll = () => {
     cancelAnimationFrame(scrollAnimationFrame);
     scrollAnimationFrame = null;
   }
+  pauseAutoScrollTemporarily(2000);
 }
 
 const isNight = ref(false)
@@ -212,6 +362,11 @@ const activeMarker = ref(null)
 const isOpening = ref(true)
 const isOpened = ref(false)
 let openAnimationTimer = null
+
+// 卷轴关闭/重开状态
+const isClosing = ref(false)
+const isClosed = ref(false)
+let closeAnimationTimer = null
 
 const currentNavIndex = ref("")
 const panels = [Panel0, Panel1, Panel2, Panel3, Panel4]
@@ -230,7 +385,9 @@ const startX = ref(0)
 const scrollLeftStart = ref(0)
 
 const startDrag = (e) => {
-  if (!scrollContainer.value) return
+  if (isFullScreen.value) return;
+  if (!scrollContainer.value) return;
+  pauseAutoScrollTemporarily(3000);
   e.preventDefault(); // 阻止默认的图片拖拽和选中行为
   startX.value = e.pageX - scrollContainer.value.offsetLeft;
   scrollLeftStart.value = scrollContainer.value.scrollLeft;
@@ -255,6 +412,7 @@ const onDrag = (e) => {
   requestAnimationFrame(() => {
     if (scrollContainer.value) {
       scrollContainer.value.scrollLeft = scrollLeftStart.value - walk;
+      currentScrollX = scrollContainer.value.scrollLeft;
     }
   });
 }
@@ -266,23 +424,69 @@ const stopDrag = () => {
   }, 50);
   window.removeEventListener('mousemove', onDrag);
   window.removeEventListener('mouseup', stopDrag);
+  if (scrollContainer.value) {
+    currentScrollX = scrollContainer.value.scrollLeft;
+  }
+  pauseAutoScrollTemporarily(3000);
 }
 
 const triggerScrollAnimation = () => {
+  if (closeAnimationTimer) clearTimeout(closeAnimationTimer)
+  isClosing.value = false
+  isClosed.value = false
   if (openAnimationTimer) clearTimeout(openAnimationTimer)
   isOpening.value = false
   isOpened.value = false
+  pauseAutoScrollTemporarily(5200);
   requestAnimationFrame(() => {
     isOpening.value = true
     openAnimationTimer = setTimeout(() => {
       isOpening.value = false
       isOpened.value = true
+      currentScrollX = 0;
+      if (scrollContainer.value) {
+        scrollContainer.value.scrollLeft = 0;
+      }
+      isAutoScrollPaused.value = false;
+      lastAutoScrollTime = performance.now();
     }, 5000)
   })
 }
 
 const replayScrollAnimation = () => {
   triggerScrollAnimation()
+}
+
+// 页面右上角：关闭画卷(收起->旋转缩放到消失) 或 重新展开画卷
+const handlePageCloseOrReopen = () => {
+  if (isClosed.value) {
+    // 重新展开画卷
+    if (closeAnimationTimer) clearTimeout(closeAnimationTimer)
+    isClosed.value = false
+    isClosing.value = false
+    triggerScrollAnimation()
+  } else {
+    // 点击关闭：第一步收起卷轴，第二步旋转并缩放到消失
+    if (isClosing.value) return
+    if (closeAnimationTimer) clearTimeout(closeAnimationTimer)
+    if (openAnimationTimer) clearTimeout(openAnimationTimer)
+
+    // 关闭任何开启的标记弹窗和抽屉
+    activeMarker.value = null
+    currentNavIndex.value = ''
+    stopScroll()
+    isAutoScrollPaused.value = true
+
+    isOpening.value = false
+    isOpened.value = false
+    isClosing.value = true
+
+    // 动画时长：阶段1收起卷轴(1.1s) -> 阶段2与展开相同旋转一圈并缩放到消失(1.2s) -> 约2.35s后完全关闭
+    closeAnimationTimer = setTimeout(() => {
+      isClosing.value = false
+      isClosed.value = true
+    }, 2350)
+  }
 }
 
 const toggleDayNight = () => {
@@ -292,7 +496,11 @@ const toggleDayNight = () => {
 // 定时更新实时时间
 let timer = null
 onMounted(() => {
+  try {
+    localStorage.removeItem('silu_fullscreen')
+  } catch (e) {}
   triggerScrollAnimation()
+  startAutoScroll()
   timer = setInterval(() => {
     const now = new Date()
     const year = now.getFullYear()
@@ -307,6 +515,8 @@ onMounted(() => {
 onUnmounted(() => {
   if (timer) clearInterval(timer)
   if (openAnimationTimer) clearTimeout(openAnimationTimer)
+  if (closeAnimationTimer) clearTimeout(closeAnimationTimer)
+  stopAutoScroll()
 })
 
 // 地标数据定义 - 100%使用 public/ 中的 Group 92@2x 包含光柱及图文贴图的精美背景图片 (坐标已校准: x - 1, y + 3)
@@ -381,10 +591,14 @@ const markers = ref([
   width: 0.3rem;
 }
 .icon-clock img{
-  width: 0.3rem;
+  width: 0.28rem;
+  height: auto;
+  display: block;
 }
 .icon-weather img{
-  width: 0.6rem;
+  width: 0.5rem;
+  height: auto;
+  display: block;
 }
 .icon-weather{
   font-size: 0px;
@@ -612,44 +826,190 @@ const markers = ref([
   }
 }
 
+/* ================= 卷轴收起与关闭动画 (两阶段) ================= */
+
+/* 整体容器完全关闭后的隐藏状态 */
+.scroll-container.is-closed {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.fullscreen-toggle.is-closing {
+  opacity: 0 !important;
+  transition: opacity 0.4s ease;
+  pointer-events: none !important;
+}
+
+/* 阶段一：收起卷轴 (0s - 1.1s) */
+.handle-left.is-closing {
+  animation: handleLeftFold 1.1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards !important;
+}
+
+.handle-right.is-closing {
+  animation: handleRightFold 1.1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards !important;
+}
+
+@keyframes handleLeftFold {
+  0% {
+    left: .14rem;
+    transform: translateX(-30%);
+  }
+  100% {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes handleRightFold {
+  0% {
+    right: .14rem;
+    transform: translateX(30%);
+  }
+  100% {
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+.ratio-box.is-closing .scroll-wrapper {
+  overflow: hidden !important;
+}
+
+.ratio-box.is-closing .scroll-content {
+  animation: scrollPhysicalFold 1.1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards !important;
+  overflow: hidden !important;
+  min-width: 0 !important;
+}
+
+.ratio-box.is-closing .panoramic-container {
+  animation: scrollContentFadeOut 1.1s ease forwards !important;
+}
+
+@keyframes scrollPhysicalFold {
+  0% {
+    width: 100%;
+    opacity: 1;
+    box-shadow: inset 0 0 40px rgba(100, 60, 20, 0.15);
+  }
+  85% {
+    opacity: 0.9;
+  }
+  100% {
+    width: 0.1vw;
+    opacity: 0;
+    box-shadow: inset 0 0 0px rgba(100, 60, 20, 0);
+  }
+}
+
+@keyframes scrollContentFadeOut {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(8px);
+  }
+}
+
+.header.is-closing,
+.scroll-footer.is-closing {
+  animation: headerFooterFold 1.1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards !important;
+}
+
+@keyframes headerFooterFold {
+  0% {
+    width: 100%;
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    width: 0.1vw;
+    opacity: 0;
+  }
+}
+
+/* 阶段二：卷轴合拢后(1.1s)，和展开一样只需顺时针旋转一圈(360度)并缩放到0消失 (1.1s - 2.3s) */
+.scroll-body.is-closing {
+  animation: scrollBodyRotateAndDisappear 1.2s cubic-bezier(0.34, 1.15, 0.64, 1) 1.1s forwards !important;
+  will-change: transform, opacity;
+}
+
+@keyframes scrollBodyRotateAndDisappear {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  60% {
+    transform: rotate(230deg) scale(0.65);
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(360deg) scale(0);
+    opacity: 0;
+  }
+}
+
 /* 顶部导航 Header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:0px .5rem;
+  padding: 0px .5rem;
   z-index: 100;
   width: 100%;
+  height: 0.6rem;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: .23rem;
+  top: .2rem;
   box-sizing: border-box;
   overflow: hidden;
   white-space: nowrap;
 }
 
 .header-left, .header-right {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   gap: 0.15rem;
   font-size: 0.12rem;
   color: #5c4015;
   font-weight: 500;
-
+  min-width: 0;
+  z-index: 2;
+  position: relative;
 }
-.header-right{
+.header-left {
+  justify-content: flex-start;
+}
+.header-right {
   justify-content: flex-end;
 }
 
 .header-center {
-  width: 8rem;
-  font-size:0px
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0px;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .header-title-img {
-  width: 100%;
+  height: 0.52rem;
+  width: auto;
+  max-width: 60vw;
   object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
 
 /* 中间全景展示大图区域 */
@@ -1108,6 +1468,10 @@ const markers = ref([
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: default !important;
+}
+.scroll-handle.is-fullscreen {
+  cursor: default !important;
 }
 .scroll-content.is-fullscreen .panoramic-container {
   width: calc(100vw - 1.6rem) !important;
@@ -1117,6 +1481,52 @@ const markers = ref([
 .scroll-content.is-fullscreen .panoramic-bg {
   width: calc(100vw - 1.6rem) !important;
   height: auto !important;
+}
+
+/* 页面右上角关闭与展开画卷按钮 */
+.page-close-btn {
+  position: absolute;
+  top: 0.16rem;
+  right: 0.35rem;
+  z-index: 99999;
+  cursor: pointer;
+  user-select: none;
+}
+
+.close-btn-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.06rem;
+  background: rgba(18, 14, 10, 0.78);
+  color: #e5c365;
+  border: 1px solid rgba(212, 175, 55, 0.65);
+  padding: 0.05rem 0.14rem;
+  border-radius: 0.18rem;
+  font-size: 0.12rem;
+  font-weight: bold;
+  letter-spacing: 0.01rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 0.02rem 0.1rem rgba(0, 0, 0, 0.4), inset 0 0 8px rgba(212, 175, 55, 0.15);
+  backdrop-filter: blur(6px);
+}
+
+.close-btn-inner:hover {
+  background: rgba(45, 32, 18, 0.9);
+  border-color: #ffd700;
+  color: #fff;
+  box-shadow: 0 0.04rem 0.16rem rgba(212, 175, 55, 0.5), inset 0 0 12px rgba(212, 175, 55, 0.3);
+  transform: translateY(-1px) scale(1.02);
+}
+
+.close-btn-inner .close-icon {
+  width: 0.14rem;
+  height: 0.14rem;
+  flex-shrink: 0;
+}
+
+.close-btn-inner .btn-text {
+  font-size: 0.12rem;
+  line-height: 1;
 }
 </style>
 
