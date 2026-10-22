@@ -26,7 +26,7 @@
       </header>
 
       <!-- 卷轴旋转与展开主体 -->
-      <div class="scroll-body" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing }">
+      <div class="scroll-body" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing }" @animationend="handleScrollBodyAnimationEnd">
         <!-- 卷轴轴柄 - 左边 (绝对定位在 scroll-body 的边缘) -->
         <div class="scroll-handle handle-left" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing, 'is-fullscreen': isFullScreen }" @mouseenter="startScroll('left')" @mouseleave="stopScroll">
           <img src="/Group 2@2x.png" alt="">
@@ -138,7 +138,7 @@
     </div>
 
     <!-- 页面右上角关闭与展开按钮 -->
-    <div class="page-close-btn" @click="handlePageCloseOrReopen" :title="isClosed || isClosing ? '展开画卷' : '收起并关闭画卷'">
+    <div class="page-close-btn" :class="{ 'is-hidden': hideCloseBtn }" @click="handlePageCloseOrReopen" :title="isClosed || isClosing ? '展开画卷' : '收起并关闭画卷'">
       <div class="close-btn-inner">
         <template v-if="!isClosed && !isClosing">
           <svg viewBox="0 0 24 24" class="close-icon" width="18" height="18">
@@ -481,11 +481,33 @@ const handlePageCloseOrReopen = () => {
     isOpened.value = false
     isClosing.value = true
 
-    // 动画时长：阶段1收起卷轴(1.1s) -> 阶段2与展开相同旋转一圈并缩放到消失(1.2s) -> 约2.35s后完全关闭
+    // 动画时长：阶段1收起卷轴(1.1s) -> 阶段2转完一圈(1.1s) -> 阶段3缩放到消失(0.5s) -> 约2.75s后完全关闭
     closeAnimationTimer = setTimeout(() => {
-      isClosing.value = false
-      isClosed.value = true
-    }, 2350)
+      finishClosingAnimation()
+    }, 2750)
+  }
+}
+
+// 关闭动效结束处理，并通知父级页面
+const finishClosingAnimation = () => {
+  if (closeAnimationTimer) {
+    clearTimeout(closeAnimationTimer)
+    closeAnimationTimer = null
+  }
+  isClosing.value = false
+  isClosed.value = true
+
+  try {
+    window.parent?.postMessage(
+      { action: 'siluCloseFinished', type: 'SILU_CLOSE_FINISHED' },
+      '*'
+    )
+  } catch (e) {}
+}
+
+const handleScrollBodyAnimationEnd = (event) => {
+  if (event.animationName === 'scrollBodyRotateAndDisappear' && isClosing.value) {
+    finishClosingAnimation()
   }
 }
 
@@ -493,9 +515,50 @@ const toggleDayNight = () => {
   isNight.value = !isNight.value
 }
 
+// 是否嵌入在 iframe 或带有 hideClose 参数
+const isInIframe = ref(false)
+const hideCloseBtn = ref(false)
+
+// 监听来自父级页面的指令：模拟触发关闭画卷动画
+const handleParentMessage = (event) => {
+  if (!event || !event.data) return
+  const data = event.data
+  if (
+    data === 'closeSilu' ||
+    data?.action === 'triggerPageClose' ||
+    data?.type === 'CLOSE_SILU'
+  ) {
+    if (!isClosed.value && !isClosing.value) {
+      handlePageCloseOrReopen()
+    }
+  }
+}
+
 // 定时更新实时时间
 let timer = null
 onMounted(() => {
+  try {
+    if (window.self !== window.top) {
+      isInIframe.value = true
+      hideCloseBtn.value = true
+      document.documentElement.classList.add('in-iframe')
+    }
+  } catch (e) {
+    isInIframe.value = true
+    hideCloseBtn.value = true
+    document.documentElement.classList.add('in-iframe')
+  }
+
+  try {
+    const urlParams = new URLSearchParams(window.location.search)
+    if (urlParams.get('hideClose') === '1' || urlParams.get('hideClose') === 'true') {
+      hideCloseBtn.value = true
+      document.documentElement.classList.add('in-iframe')
+    }
+  } catch (e) {}
+
+  window.addEventListener('message', handleParentMessage)
+
   try {
     localStorage.removeItem('silu_fullscreen')
   } catch (e) {}
@@ -513,6 +576,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  window.removeEventListener('message', handleParentMessage)
   if (timer) clearInterval(timer)
   if (openAnimationTimer) clearTimeout(openAnimationTimer)
   if (closeAnimationTimer) clearTimeout(closeAnimationTimer)
@@ -932,9 +996,9 @@ const markers = ref([
   }
 }
 
-/* 阶段二：卷轴合拢后(1.1s)，和展开一样只需顺时针旋转一圈(360度)并缩放到0消失 (1.1s - 2.3s) */
+/* 阶段二：卷轴合拢后(1.1s)，先顺时针转完一圈(360度)，然后再缩放到0完全消失 (1.1s - 2.7s) */
 .scroll-body.is-closing {
-  animation: scrollBodyRotateAndDisappear 1.2s cubic-bezier(0.34, 1.15, 0.64, 1) 1.1s forwards !important;
+  animation: scrollBodyRotateAndDisappear 1.6s linear 1.1s forwards !important;
   will-change: transform, opacity;
 }
 
@@ -942,10 +1006,16 @@ const markers = ref([
   0% {
     transform: rotate(0deg) scale(1);
     opacity: 1;
+    animation-timing-function: cubic-bezier(0.34, 1.15, 0.64, 1);
   }
-  60% {
-    transform: rotate(230deg) scale(0.65);
-    opacity: 0.8;
+  42% {
+    transform: rotate(230deg) scale(1.02);
+    opacity: 1;
+  }
+  70% {
+    transform: rotate(360deg) scale(1);
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
   100% {
     transform: rotate(360deg) scale(0);
@@ -1491,6 +1561,13 @@ const markers = ref([
   z-index: 99999;
   cursor: pointer;
   user-select: none;
+}
+
+/* 嵌入在 iframe 或带有 hideClose 参数时隐藏此按钮 */
+:root.in-iframe .page-close-btn,
+.in-iframe .page-close-btn,
+.page-close-btn.is-hidden {
+  display: none !important;
 }
 
 .close-btn-inner {
