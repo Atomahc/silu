@@ -1,6 +1,6 @@
 <template>
   <div class="app-shell">
-    <div class="scroll-container" :class="{ 'is-night': isNight, 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing, 'is-closed': isClosed }">
+    <div class="scroll-container" :class="{ 'is-night': isNight, 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing, 'is-closed': isClosed, 'is-fullscreen': isFullScreen }">
       
       <!-- 头部 Header (固定在 scroll-container) -->
       <header class="header" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing }">
@@ -26,7 +26,7 @@
       </header>
 
       <!-- 卷轴旋转与展开主体 -->
-      <div class="scroll-body" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing }" @animationend="handleScrollBodyAnimationEnd">
+      <div class="scroll-body" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing, 'is-fullscreen': isFullScreen }" @animationend="handleScrollBodyAnimationEnd">
         <!-- 卷轴轴柄 - 左边 (绝对定位在 scroll-body 的边缘) -->
         <div class="scroll-handle handle-left" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing, 'is-fullscreen': isFullScreen }" @mouseenter="startScroll('left')" @mouseleave="stopScroll">
           <img src="/Group 2@2x.png" alt="">
@@ -38,8 +38,8 @@
         </div>
 
         <!-- Ratio Box (100% width) -->
-        <div class="ratio-box" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing }">
-          <div class="scroll-wrapper">
+        <div class="ratio-box" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing, 'is-fullscreen': isFullScreen }">
+          <div class="scroll-wrapper" :class="{ 'is-fullscreen': isFullScreen }">
             <!-- 这里使用 ref 处理真正的横向滚动 -->
             <div class="scroll-content" ref="scrollContainer" 
                  @mousedown="startDrag" 
@@ -81,12 +81,20 @@
         </div>
       </div>
               <!-- 弹窗展示选中地标/板块的详细信息 -->
-              <div v-if="activeMarker && activeMarker.htmlContent" class="marker-modal-backdrop" @click.self="activeMarker = null">
-                <div class="marker-modal" :class="{ 'html-modal': activeMarker.htmlContent }">
+              <div v-if="activeMarker && (activeMarker.htmlContent || activeMarker.iframeUrl)" class="marker-modal-backdrop" @click.self="activeMarker = null">
+                <div class="marker-modal" :class="{ 'html-modal': activeMarker.htmlContent && !activeMarker.iframeUrl, 'iframe-modal': !!activeMarker.iframeUrl }">
                   <button class="modal-close" @click="activeMarker = null">✕</button>
                   <h3>{{ activeMarker.title }}</h3>
                   <div class="modal-divider"></div>
-                  <div v-if="activeMarker.htmlContent" class="modal-html-content custom-scrollbar" v-html="activeMarker.htmlContent"></div>
+                  <iframe 
+                    v-if="activeMarker.iframeUrl" 
+                    :src="activeMarker.iframeUrl" 
+                    class="modal-iframe" 
+                    frameborder="0" 
+                    allowfullscreen 
+                    allow="fullscreen; accelerometer; gyroscope; magnetometer; vr"
+                  ></iframe>
+                  <div v-else-if="activeMarker.htmlContent" class="modal-html-content custom-scrollbar" v-html="activeMarker.htmlContent"></div>
                   <template v-else>
                     <p>{{ activeMarker.desc }}</p>
                     <div class="modal-stats">
@@ -132,10 +140,12 @@
       </footer>
 
     </div>
-    <!-- 全屏切换按钮 -->
-    <div class="fullscreen-toggle" v-if="!isClosed" :class="{ 'is-closing': isClosing }">
+    <!-- 全屏切换按钮 (已隐藏) -->
+    <!--
+    <div class="fullscreen-toggle" v-if="!isClosed" :class="{ 'is-opening': isOpening, 'is-closing': isClosing }">
       <button @click="toggleFullScreen">{{ isFullScreen ? '切换为滚动模式' : '全屏模式展示' }}</button>
     </div>
+    -->
 
     <!-- 页面右上角关闭与展开按钮 -->
     <div class="page-close-btn" :class="{ 'is-hidden': hideCloseBtn }" @click="handlePageCloseOrReopen" :title="isClosed || isClosing ? '展开画卷' : '收起并关闭画卷'">
@@ -431,6 +441,11 @@ const stopDrag = () => {
 }
 
 const triggerScrollAnimation = () => {
+  if (typeof window !== 'undefined' && window.location.search.includes('noAnim')) {
+    isOpening.value = false
+    isOpened.value = true
+    return
+  }
   if (closeAnimationTimer) clearTimeout(closeAnimationTimer)
   isClosing.value = false
   isClosed.value = false
@@ -592,7 +607,8 @@ const markers = ref([
   { id: 8, x: 44.8, y: 29.0, title: '经济开发区', bgImg: './labb3.png', bottomImg: './labbb.png', width: 'auto', height: '.5rem', desc: '国家级经济开发区，推动跨境产业与新兴工业全产业链高质量发展。', stats: [{ label: '开发区面积', value: '73k㎡' }, { label: '投产项目', value: '210个' }] },
   { id: 22, x: 24.0, y: 30.0, title: '进出口货运量', subTitle: '2701.2万吨', bgImg: './labb1.png',  width: '2rem', height: '.8rem', desc: '进出口货运量统计。', stats: [{ label: '进出口货运量', value: '2701.2万吨' }] },
   { id: 9, x: 52.5, y: 58.5, title: '自贸区', bgImg: './labg2.png', bottomImg: './labgb.png', width: 'auto', height: '.5rem', desc: '中国（新疆）自由贸易试验区霍尔果斯片区。', stats: [{ label: '企业注册', value: '1200+' }, { label: '政策扶持', value: '全方位' }], htmlContent: marker6Html },
-  { id: 11, x: 65.5, y: 42.5, title: '中哈合作中心', bgImg: './labg3.png', bottomImg: './labgb.png', width: '1.6rem', height: '.5rem', desc: '全球首个跨国边境自由贸易合作区，实现中哈两国人员、车辆与货物的自由流动。', stats: [{ label: '免税额度', value: '8000元/人' }, { label: '日均客流', value: '2.5万人' }], htmlContent: marker10Html },
+  { id: 10, x: 63.5, y: 33.5, title: '中国文化馆', bgImg: './labg3.png', bottomImg: './labgb.png', width: '1.6rem', height: '.5rem', desc: '中国文化馆VR全景展示。', iframeUrl: 'https://www.720yun.com/vr/e96jtOkaty0' },
+  { id: 11, x: 70.5, y: 45.5, title: '中哈合作中心', bgImg: './labg3.png', bottomImg: './labgb.png', width: '1.6rem', height: '.5rem', desc: '全球首个跨国边境自由贸易合作区，实现中哈两国人员、车辆与货物的自由流动。', stats: [{ label: '免税额度', value: '8000元/人' }, { label: '日均客流', value: '2.5万人' }], htmlContent: marker10Html },
   { id: 12, x: 73.2, y: 24.0, title: '城市天际线', bgImg: './labg3.png', bottomImg: './labgb.png', width: 'auto', height: '.5rem', desc: '展现现代化口岸新城向现代化高科技城市迈进的雄伟城市轮廓。', stats: [{ label: '建筑地标', value: '12座' }, { label: '绿化覆盖率', value: '42%' }], htmlContent: marker12Html },
   { id: 13, x: 90.0, y: 67.5, title: '智慧治理指挥中心', bgImg: './labp1.png', bottomImg: './labpb.png', width: '2rem', height: '.5rem', desc: '依托大屏监控与全域感知系统，实现口岸人流、物流、车流及城市的精细化全天候运营管理。', stats: [{ label: '全域感知设备', value: '12000+' }, { label: '事件处置率', value: '99.8%' }] },
   { id: 14, x: 77.0, y: 80.0, title: '产业园区', bgImg: './labg3.png', bottomImg: './labgb.png', width: 'auto', height: '.5rem', desc: '涵盖先进制造、农产品深加工、高端装备制造的跨境优势产业集群。', stats: [{ label: '产值规模', value: '180亿元' }, { label: '科技企业', value: '68家' }] },
@@ -602,7 +618,7 @@ const markers = ref([
   { id: 18, x: 45.0, y: 60.0, title: '外贸进出口', subTitle: '(申报数)689.44亿元', bgImg: './labb2.png',  width: '2rem', height: '.9rem', desc: '霍尔果斯外贸进出口（申报数）稳步增长。', stats: [{ label: '申报金额', value: '689.44亿元' }] },
   { id: 19, x: 60.0, y: 70.0, title: '落地项目18个', subTitle: '同比增长63.63%', bgImg: './labg2.png', width: '2rem', height: '.9rem', desc: '落地项目建设进展。', stats: [{ label: '落地项目', value: '18个' }, { label: '同比增长', value: '63.63%' }] },
   { id: 20, x: 77.0, y: 70.0, title: '地区生产总值',subTitle: '122亿元', bgImg: './labg3.png',  width: '1.6rem', height: '.9rem', desc: '地区生产总值。', stats: [{ label: '地区生产总值', value: '122亿元' }] },
-  { id: 21, x: 60.0, y: 44.0, title: '入出园人员', subTitle: '512万人次', bgImg: './labg3.png',  width: '1.6rem', height: '.9rem', desc: '入出园人员情况。', stats: [{ label: '入出园人员', value: '512万人次' }] },
+  { id: 21, x: 57.0, y: 44.0, title: '入出园人员', subTitle: '512万人次', bgImg: './labg3.png',  width: '1.6rem', height: '.9rem', desc: '入出园人员情况。', stats: [{ label: '入出园人员', value: '512万人次' }] },
 ])
 </script>
 
@@ -730,7 +746,7 @@ const markers = ref([
 .handle-left {
   height: 100%;
   position: absolute;
-  left: .14rem;
+  left: .16rem;
   top: 0;
   z-index: 99999;
   pointer-events: auto;
@@ -751,7 +767,7 @@ const markers = ref([
 .handle-right {
   height: 100%;
   position: absolute;
-  right: .14rem;
+  right: .16rem;
   top: 0;
   z-index: 99999;
   pointer-events: auto;
@@ -1220,6 +1236,25 @@ const markers = ref([
   to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
+.marker-modal.iframe-modal {
+  width: 12rem;
+  max-width: 92vw;
+  height: calc(100% - 0.6rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-iframe {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border: none;
+  border-radius: 0.08rem;
+  background: #000;
+  display: block;
+}
+
 .modal-close {
   position: absolute;
   top: 0.14rem;
@@ -1229,6 +1264,7 @@ const markers = ref([
   font-size: 0.2rem;
   color: #8c6a38;
   cursor: pointer;
+  z-index: 10;
 }
 
 .marker-modal h3 {
@@ -1505,11 +1541,18 @@ const markers = ref([
 
 /* 全屏切换按钮 */
 .fullscreen-toggle {
+  display: none !important;
   position: absolute;
-  bottom: 0.15rem;
+  bottom: 0.9rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 999999;
+}
+:root.is-fullscreen-mode .fullscreen-toggle {
+  bottom: 0.3rem;
+}
+.fullscreen-toggle.is-opening {
+  animation: headerFooterExpand 3.6s cubic-bezier(0.25, 0.1, 0.25, 1) 1.2s both;
 }
 .fullscreen-toggle button {
   background: rgba(0, 0, 0, 0.65);
@@ -1551,6 +1594,46 @@ const markers = ref([
 .scroll-content.is-fullscreen .panoramic-bg {
   width: calc(100vw - 1.6rem) !important;
   height: auto !important;
+}
+
+/* 滚动模式下卷轴主体高度占满全屏 */
+:root:not(.is-fullscreen-mode) .scroll-container,
+.scroll-container:not(.is-fullscreen) {
+  height: 100%;
+}
+
+:root:not(.is-fullscreen-mode) .scroll-body,
+.scroll-body:not(.is-fullscreen) {
+  height: 100%;
+}
+
+:root:not(.is-fullscreen-mode) .ratio-box,
+.ratio-box:not(.is-fullscreen) {
+  height: 100%;
+}
+
+:root:not(.is-fullscreen-mode) .scroll-wrapper,
+.scroll-wrapper:not(.is-fullscreen) {
+  height: 100%;
+}
+
+:root:not(.is-fullscreen-mode) .scroll-content,
+.scroll-content:not(.is-fullscreen) {
+  height: 100%;
+}
+
+:root:not(.is-fullscreen-mode) .panoramic-container,
+.scroll-content:not(.is-fullscreen) .panoramic-container {
+  height: 100%;
+  width: max-content;
+  min-width: 100%;
+}
+
+:root:not(.is-fullscreen-mode) .panoramic-bg,
+.scroll-content:not(.is-fullscreen) .panoramic-bg {
+  height: 100%;
+  width: auto;
+  max-width: none;
 }
 
 /* 页面右上角关闭与展开画卷按钮 */
