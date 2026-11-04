@@ -1,6 +1,43 @@
 <template>
   <div class="app-shell">
-    <div class="scroll-container" :class="{ 'is-night': isNight, 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing, 'is-closed': isClosed, 'is-fullscreen': isFullScreen }">
+    <!-- 全屏片头视频 (首次进入全屏播放) -->
+    <transition name="fade-silu-intro">
+      <div v-if="showIntroVideo" class="silu-intro-overlay">
+        <video
+          ref="introVideoRef"
+          class="silu-intro-video"
+          :src="introVideoUrl"
+          autoplay
+          muted
+          playsinline
+          webkit-playsinline
+          x5-video-player-type="h5-page"
+          @ended="skipIntroVideo"
+          @error="skipIntroVideo"
+          @timeupdate="handleTimeUpdate"
+          @click="toggleMute"
+        ></video>
+
+        <!-- 顶部操作条：静音与跳过 -->
+        <div class="silu-intro-controls">
+          <button class="silu-intro-btn sound-btn" type="button" @click.stop="toggleMute">
+            <span class="btn-icon">{{ isMuted ? '🔇' : '🔊' }}</span>
+            <span>{{ isMuted ? '开启声音' : '静音' }}</span>
+          </button>
+          <button class="silu-intro-btn skip-btn" type="button" @click.stop="skipIntroVideo">
+            <span>跳过</span>
+            <span v-if="countdownText" class="countdown-badge">{{ countdownText }}</span>
+          </button>
+        </div>
+
+        <!-- 底部提示 -->
+        <div class="silu-intro-hint" @click.stop="toggleMute">
+          <span>{{ isMuted ? '点击画面开启声音' : '点击画面静音' }}</span>
+        </div>
+      </div>
+    </transition>
+
+    <div class="scroll-container" :class="{ 'no-open-anim': !enableScrollAnimation, 'is-night': isNight, 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing, 'is-closed': isClosed, 'is-fullscreen': isFullScreen }">
       
       <!-- 头部 Header (固定在 scroll-container) -->
       <header class="header" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing }">
@@ -168,7 +205,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 
 const isFullScreen = ref(false)
 
@@ -368,9 +405,12 @@ const lastUpdated = ref('2026/07/03')
 const currentTime = ref('2026/07/03')
 const activeMarker = ref(null)
 
-// 卷轴动画状态
-const isOpening = ref(true)
-const isOpened = ref(false)
+// 卷轴开卷动画配置：默认配置隐藏（false: 隐藏原有旋转展开动画效果，直接完全展开；true: 开启原有动画）
+const enableScrollAnimation = ref(false)
+
+// 卷轴动画状态 (配置隐藏原有动画时，默认即为展开完成状态)
+const isOpening = ref(false)
+const isOpened = ref(true)
 let openAnimationTimer = null
 
 // 卷轴关闭/重开状态
@@ -441,9 +481,20 @@ const stopDrag = () => {
 }
 
 const triggerScrollAnimation = () => {
-  if (typeof window !== 'undefined' && window.location.search.includes('noAnim')) {
+  // 如果配置隐藏了开卷动画，直接进入完全展开状态
+  if (!enableScrollAnimation.value || (typeof window !== 'undefined' && window.location.search.includes('noAnim'))) {
+    if (closeAnimationTimer) clearTimeout(closeAnimationTimer)
+    if (openAnimationTimer) clearTimeout(openAnimationTimer)
+    isClosing.value = false
+    isClosed.value = false
     isOpening.value = false
     isOpened.value = true
+    if (scrollContainer.value) {
+      scrollContainer.value.scrollLeft = 0
+      currentScrollX = 0
+    }
+    isAutoScrollPaused.value = false
+    lastAutoScrollTime = performance.now()
     return
   }
   if (closeAnimationTimer) clearTimeout(closeAnimationTimer)
@@ -534,6 +585,80 @@ const toggleDayNight = () => {
 const isInIframe = ref(false)
 const hideCloseBtn = ref(false)
 
+// 全屏片头视频配置及状态
+const INTRO_VIDEO_KEY = 'has_played_silu_intro_video'
+const introVideoUrl = `${(import.meta.env.BASE_URL || './').replace(/\/$/, '')}/mmexport1793348326502.mp4`
+const showIntroVideo = ref(false)
+const introVideoRef = ref(null)
+const isMuted = ref(true)
+const countdownText = ref('')
+
+const formatTime = (seconds) => {
+  if (isNaN(seconds) || seconds < 0) return ''
+  const m = Math.floor(seconds / 60)
+  const s = Math.floor(seconds % 60)
+  if (m > 0) {
+    return `${m}:${String(s).padStart(2, '0')}`
+  }
+  return `${s}s`
+}
+
+const handleTimeUpdate = () => {
+  if (!introVideoRef.value) return
+  const current = introVideoRef.value.currentTime || 0
+  const duration = introVideoRef.value.duration || 0
+  if (duration > 0) {
+    const remaining = Math.max(0, Math.ceil(duration - current))
+    countdownText.value = formatTime(remaining)
+  }
+}
+
+const toggleMute = () => {
+  if (!introVideoRef.value) return
+  introVideoRef.value.muted = !introVideoRef.value.muted
+  isMuted.value = introVideoRef.value.muted
+}
+
+const skipIntroVideo = () => {
+  if (!showIntroVideo.value) return
+  if (introVideoRef.value) {
+    introVideoRef.value.pause()
+  }
+  showIntroVideo.value = false
+  triggerScrollAnimation()
+  if (scrollContainer.value) {
+    scrollContainer.value.scrollLeft = 0
+    currentScrollX = 0
+  }
+  isAutoScrollPaused.value = false
+  lastAutoScrollTime = performance.now()
+  startAutoScroll()
+}
+
+const handleIntroKeydown = (e) => {
+  if (!showIntroVideo.value) return
+  if (e.key === 'Escape' || e.code === 'Escape') {
+    skipIntroVideo()
+  } else if (e.key === 'm' || e.key === 'M') {
+    toggleMute()
+  }
+}
+
+const checkIntroVideo = () => {
+  try {
+    const urlParams = new URLSearchParams(window.location.search)
+    const skipIntro = urlParams.get('skipIntro') === '1' || urlParams.get('noIntro') === '1' || urlParams.get('noVideo') === '1'
+    if (skipIntro) {
+      showIntroVideo.value = false
+      return
+    }
+    // 视频每次刷新都加载播放
+    showIntroVideo.value = true
+  } catch (e) {
+    showIntroVideo.value = true
+  }
+}
+
 // 监听来自父级页面的指令：模拟触发关闭画卷动画
 const handleParentMessage = (event) => {
   if (!event || !event.data) return
@@ -543,6 +668,9 @@ const handleParentMessage = (event) => {
     data?.action === 'triggerPageClose' ||
     data?.type === 'CLOSE_SILU'
   ) {
+    if (showIntroVideo.value) {
+      skipIntroVideo()
+    }
     if (!isClosed.value && !isClosing.value) {
       handlePageCloseOrReopen()
     }
@@ -577,8 +705,34 @@ onMounted(() => {
   try {
     localStorage.removeItem('silu_fullscreen')
   } catch (e) {}
-  triggerScrollAnimation()
-  startAutoScroll()
+
+  try {
+    const urlParams = new URLSearchParams(window.location.search)
+    if (urlParams.get('anim') === '1' || urlParams.get('openAnim') === '1') {
+      enableScrollAnimation.value = true
+      isOpening.value = true
+      isOpened.value = false
+    }
+  } catch (e) {}
+
+  checkIntroVideo()
+  if (showIntroVideo.value) {
+    // 片头视频播放期间暂停画卷自动滚动，播放完毕后由 skipIntroVideo 从头开始滚动
+    isAutoScrollPaused.value = true
+    nextTick(() => {
+      if (introVideoRef.value) {
+        introVideoRef.value.play().catch(err => {
+          console.warn('Intro video autoplay error:', err)
+        })
+      }
+    })
+  } else {
+    triggerScrollAnimation()
+    startAutoScroll()
+  }
+
+  window.addEventListener('keydown', handleIntroKeydown)
+
   timer = setInterval(() => {
     const now = new Date()
     const year = now.getFullYear()
@@ -592,6 +746,10 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('message', handleParentMessage)
+  window.removeEventListener('keydown', handleIntroKeydown)
+  if (introVideoRef.value) {
+    introVideoRef.value.pause()
+  }
   if (timer) clearInterval(timer)
   if (openAnimationTimer) clearTimeout(openAnimationTimer)
   if (closeAnimationTimer) clearTimeout(closeAnimationTimer)
@@ -791,6 +949,21 @@ const markers = ref([
   height: auto;
   position: relative;
   transform-origin: center center;
+}
+
+/* 配置隐藏卷轴原有动画效果 */
+.scroll-container.no-open-anim.is-opening,
+.scroll-container.no-open-anim .is-opening {
+  animation: none !important;
+}
+.scroll-container.no-open-anim .scroll-body.is-opening,
+.scroll-container.no-open-anim .ratio-box.is-opening .scroll-content,
+.scroll-container.no-open-anim .ratio-box.is-opening .panoramic-container,
+.scroll-container.no-open-anim .handle-left.is-opening,
+.scroll-container.no-open-anim .handle-right.is-opening,
+.scroll-container.no-open-anim .header.is-opening,
+.scroll-container.no-open-anim .scroll-footer.is-opening {
+  animation: none !important;
 }
 
 /* 初始加载动画：在卷轴展开之前先旋转一圈 (360度) */
@@ -1687,6 +1860,116 @@ const markers = ref([
 .close-btn-inner .btn-text {
   font-size: 0.12rem;
   line-height: 1;
+}
+
+/* 全屏片头视频样式 */
+.silu-intro-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.silu-intro-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+.silu-intro-controls {
+  position: absolute;
+  top: 0.16rem;
+  right: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  z-index: 10;
+}
+
+.silu-intro-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.06rem;
+  background: rgba(18, 14, 10, 0.78);
+  color: #e5c365;
+  border: 1px solid rgba(212, 175, 55, 0.65);
+  padding: 0.06rem 0.14rem;
+  border-radius: 0.18rem;
+  font-size: 0.12rem;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0.02rem 0.1rem rgba(0, 0, 0, 0.4), inset 0 0 8px rgba(212, 175, 55, 0.15);
+  transition: all 0.25s ease;
+}
+
+.silu-intro-btn:hover {
+  background: rgba(45, 32, 18, 0.92);
+  border-color: #ffd700;
+  color: #fff;
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0.04rem 0.16rem rgba(212, 175, 55, 0.5), inset 0 0 12px rgba(212, 175, 55, 0.3);
+}
+
+.silu-intro-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.silu-intro-btn .btn-icon {
+  font-size: 0.13rem;
+  line-height: 1;
+}
+
+.silu-intro-btn .countdown-badge {
+  display: inline-block;
+  padding: 0.01rem 0.05rem;
+  font-size: 0.11rem;
+  background: rgba(212, 175, 55, 0.25);
+  border-radius: 0.08rem;
+  margin-left: 0.02rem;
+}
+
+.silu-intro-hint {
+  position: absolute;
+  bottom: 0.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #e5c365;
+  font-size: 0.11rem;
+  padding: 0.04rem 0.12rem;
+  border-radius: 0.12rem;
+  pointer-events: auto;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  opacity: 0.85;
+  transition: opacity 0.25s ease;
+  user-select: none;
+}
+
+.silu-intro-hint:hover {
+  opacity: 1;
+}
+
+/* 片头退出淡出过渡 */
+.fade-silu-intro-enter-active,
+.fade-silu-intro-leave-active {
+  transition: opacity 0.6s ease;
+}
+
+.fade-silu-intro-enter-from,
+.fade-silu-intro-leave-to {
+  opacity: 0;
 }
 </style>
 
