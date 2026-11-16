@@ -1,7 +1,7 @@
 <template>
   <div class="app-shell">
     <!-- 全屏片头视频 (首次进入全屏播放) -->
-    <transition name="fade-silu-intro">
+    <transition name="fade-silu-intro" @after-leave="handleIntroAfterLeave">
       <div v-if="showIntroVideo" class="silu-intro-overlay">
         <video
           ref="introVideoRef"
@@ -24,7 +24,7 @@
             <span class="btn-icon">{{ isMuted ? '🔇' : '🔊' }}</span>
             <span>{{ isMuted ? '开启声音' : '静音' }}</span>
           </button>
-          <button class="silu-intro-btn skip-btn" type="button" @click.stop="skipIntroVideo">
+          <button class="silu-intro-btn skip-btn" type="button" @click.stop="skipIntroVideo" title="关闭或跳过视频">
             <span>跳过</span>
             <span v-if="countdownText" class="countdown-badge">{{ countdownText }}</span>
           </button>
@@ -37,7 +37,7 @@
       </div>
     </transition>
 
-    <div class="scroll-container" :class="{ 'no-open-anim': !enableScrollAnimation, 'is-night': isNight, 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing, 'is-closed': isClosed, 'is-fullscreen': isFullScreen }">
+    <div class="scroll-container" :class="{ 'no-open-anim': !enableScrollAnimation, 'is-night': isNight, 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing, 'is-closed': isClosed, 'is-fullscreen': isFullScreen, 'is-scroll-entering': isScrollEntering }">
       
       <!-- 头部 Header (固定在 scroll-container) -->
       <header class="header" :class="{ 'is-opening': isOpening, 'is-opened': isOpened, 'is-closing': isClosing }">
@@ -523,7 +523,7 @@ const replayScrollAnimation = () => {
   triggerScrollAnimation()
 }
 
-// 页面右上角：关闭画卷(收起->旋转缩放到消失) 或 重新展开画卷
+// 页面右上角：关闭画卷(收起合拢后平滑淡出，不旋转) 或 重新展开画卷
 const handlePageCloseOrReopen = () => {
   if (isClosed.value) {
     // 重新展开画卷
@@ -531,8 +531,15 @@ const handlePageCloseOrReopen = () => {
     isClosed.value = false
     isClosing.value = false
     triggerScrollAnimation()
+    // 重新展开时平滑渐出
+    isScrollEntering.value = true
+    if (scrollEnteringTimer) clearTimeout(scrollEnteringTimer)
+    scrollEnteringTimer = setTimeout(() => {
+      isScrollEntering.value = false
+      scrollEnteringTimer = null
+    }, 1400)
   } else {
-    // 点击关闭：第一步收起卷轴，第二步旋转并缩放到消失
+    // 点击关闭：第一步收起卷轴至中央(1.1s)，第二步平滑缩放淡出消失(0.45s)，不再旋转
     if (isClosing.value) return
     if (closeAnimationTimer) clearTimeout(closeAnimationTimer)
     if (openAnimationTimer) clearTimeout(openAnimationTimer)
@@ -547,10 +554,10 @@ const handlePageCloseOrReopen = () => {
     isOpened.value = false
     isClosing.value = true
 
-    // 动画时长：阶段1收起卷轴(1.1s) -> 阶段2转完一圈(1.1s) -> 阶段3缩放到消失(0.5s) -> 约2.75s后完全关闭
+    // 动画时长：阶段1收起卷轴(1.1s) -> 阶段2合拢后平滑淡出(0.45s) -> 约1.6s后完全关闭
     closeAnimationTimer = setTimeout(() => {
       finishClosingAnimation()
-    }, 2750)
+    }, 1600)
   }
 }
 
@@ -572,7 +579,10 @@ const finishClosingAnimation = () => {
 }
 
 const handleScrollBodyAnimationEnd = (event) => {
-  if (event.animationName === 'scrollBodyRotateAndDisappear' && isClosing.value) {
+  if (
+    (event.animationName === 'scrollBodyDisappear' || event.animationName === 'scrollBodyRotateAndDisappear') &&
+    isClosing.value
+  ) {
     finishClosingAnimation()
   }
 }
@@ -592,6 +602,28 @@ const showIntroVideo = ref(false)
 const introVideoRef = ref(null)
 const isMuted = ref(true)
 const countdownText = ref('')
+const isIntroExiting = ref(false)
+const isScrollEntering = ref(false)
+let scrollEnteringTimer = null
+
+const fadeOutAudio = () => {
+  const video = introVideoRef.value
+  if (!video || video.muted || video.volume <= 0) return
+  const startVolume = video.volume
+  const startTime = performance.now()
+  const duration = 700
+  const fade = (currentTime) => {
+    const elapsed = currentTime - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    if (video) {
+      video.volume = Math.max(0, startVolume * (1 - progress))
+      if (progress < 1) {
+        requestAnimationFrame(fade)
+      }
+    }
+  }
+  requestAnimationFrame(fade)
+}
 
 const formatTime = (seconds) => {
   if (isNaN(seconds) || seconds < 0) return ''
@@ -620,19 +652,42 @@ const toggleMute = () => {
 }
 
 const skipIntroVideo = () => {
-  if (!showIntroVideo.value) return
-  if (introVideoRef.value) {
-    introVideoRef.value.pause()
-  }
+  if (isIntroExiting.value || !showIntroVideo.value) return
+  isIntroExiting.value = true
+
+  // 1. 音频平滑渐隐淡出
+  fadeOutAudio()
+
+  // 2. 触发视频遮罩渐隐 (fade-silu-intro leave 动画)
   showIntroVideo.value = false
+
+  // 3. 触发画卷渐出动效 (scrollEntranceFadeIn)
+  isScrollEntering.value = true
+  if (scrollEnteringTimer) clearTimeout(scrollEnteringTimer)
+  scrollEnteringTimer = setTimeout(() => {
+    isScrollEntering.value = false
+    scrollEnteringTimer = null
+  }, 1400)
+
+  // 4. 重置卷轴位置至起始端
   triggerScrollAnimation()
   if (scrollContainer.value) {
     scrollContainer.value.scrollLeft = 0
     currentScrollX = 0
   }
-  isAutoScrollPaused.value = false
-  lastAutoScrollTime = performance.now()
+
+  // 5. 渐出动效期间先暂停横向自动循环滚动，待画卷平稳显现后再启动
+  pauseAutoScrollTemporarily(1600)
   startAutoScroll()
+}
+
+const handleIntroAfterLeave = () => {
+  if (introVideoRef.value) {
+    try {
+      introVideoRef.value.pause()
+    } catch (e) {}
+  }
+  isIntroExiting.value = false
 }
 
 const handleIntroKeydown = (e) => {
@@ -753,6 +808,10 @@ onUnmounted(() => {
   if (timer) clearInterval(timer)
   if (openAnimationTimer) clearTimeout(openAnimationTimer)
   if (closeAnimationTimer) clearTimeout(closeAnimationTimer)
+  if (scrollEnteringTimer) {
+    clearTimeout(scrollEnteringTimer)
+    scrollEnteringTimer = null
+  }
   stopAutoScroll()
 })
 
@@ -1185,29 +1244,19 @@ const markers = ref([
   }
 }
 
-/* 阶段二：卷轴合拢后(1.1s)，先顺时针转完一圈(360度)，然后再缩放到0完全消失 (1.1s - 2.7s) */
+/* 阶段二：卷轴合拢后(1.1s)，直接平滑微缩淡出消失（无旋转） */
 .scroll-body.is-closing {
-  animation: scrollBodyRotateAndDisappear 1.6s linear 1.1s forwards !important;
+  animation: scrollBodyDisappear 0.45s cubic-bezier(0.4, 0, 0.2, 1) 1.1s forwards !important;
   will-change: transform, opacity;
 }
 
-@keyframes scrollBodyRotateAndDisappear {
+@keyframes scrollBodyDisappear {
   0% {
-    transform: rotate(0deg) scale(1);
+    transform: scale(1);
     opacity: 1;
-    animation-timing-function: cubic-bezier(0.34, 1.15, 0.64, 1);
-  }
-  42% {
-    transform: rotate(230deg) scale(1.02);
-    opacity: 1;
-  }
-  70% {
-    transform: rotate(360deg) scale(1);
-    opacity: 1;
-    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
   100% {
-    transform: rotate(360deg) scale(0);
+    transform: scale(0.92);
     opacity: 0;
   }
 }
@@ -1961,15 +2010,55 @@ const markers = ref([
   opacity: 1;
 }
 
-/* 片头退出淡出过渡 */
-.fade-silu-intro-enter-active,
+/* 片头视频渐隐与卷轴渐出过渡 */
+.fade-silu-intro-enter-active {
+  transition: opacity 0.5s ease;
+}
+
 .fade-silu-intro-leave-active {
-  transition: opacity 0.6s ease;
+  transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
 }
 
 .fade-silu-intro-enter-from,
 .fade-silu-intro-leave-to {
   opacity: 0;
+}
+
+.fade-silu-intro-leave-active .silu-intro-video {
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), filter 1s ease;
+  transform: scale(1.04);
+  filter: brightness(1.05);
+}
+
+.fade-silu-intro-leave-active .silu-intro-controls,
+.fade-silu-intro-leave-active .silu-intro-hint {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 卷轴平滑渐出动效 (配合视频渐隐交替呈现) */
+.scroll-container.is-scroll-entering {
+  animation: scrollEntranceFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform, filter;
+  transform-origin: center center;
+}
+
+@keyframes scrollEntranceFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateZ(0);
+    filter: blur(6px);
+  }
+  50% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+    filter: blur(0px);
+  }
 }
 </style>
 
